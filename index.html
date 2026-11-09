@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Overview · 72261 · PRIME Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@500&display=swap">
+<style>
+/* ===== PrimeAdmin 3 tokens + components (unused rules removed) ===== */
+@font-face { font-family: "Roboto Flex"; src: url("fonts/RobotoFlex-Variable.ttf") format("truetype-variations"); font-weight: 100 1000; font-stretch: 25% 151%; font-display: swap; }
+:root { --pa-primary: rgb(25, 118, 210); --pa-primary-700: rgb(17,  71, 161); --pa-primary-050: rgb(238, 245, 252); --pa-primary-12a: rgba(25, 118, 210, 0.12); --pa-primary-04a: rgba(25, 118, 210, 0.04); --pa-aqua-500: rgb(  0, 173, 238); --pa-ink: rgb( 33,  33,  33); --pa-ink-2: rgb( 66,  66,  66); --pa-ink-3: rgb(102, 102, 102); --pa-ink-4: rgb(113, 113, 113); --pa-ink-6: rgb(137, 147, 158); --pa-ink-7: rgb(158, 158, 158); --pa-paper: rgb(255, 255, 255); --pa-band: rgb(240, 240, 240); --pa-line: rgb(238, 238, 238); --pa-line-2: rgb(224, 224, 224); --pa-divider: rgba(0, 0, 0, 0.12); --pa-rule: rgba(0, 0, 0, 0.60); --pa-sidebar-bg: rgb( 32,  32,  32); --pa-sidebar-active: rgb( 62,  62,  62); --pa-avatar-green: rgb( 76, 175,  80); --pa-field-line: rgba(0, 0, 0, 0.42); --pa-field-focus: rgb(0, 0, 0); --pa-success: rgb( 46, 125,  50); --pa-success-bg: rgb(232, 245, 233); --pa-warning: rgb(233, 143,  40); --pa-warning-bg: rgb(255, 244, 229); --pa-error: rgb(211,  47,  47); --pa-error-bg: rgb(253, 237, 237); --pa-font-sans: "Roboto", system-ui, sans-serif; --pa-font-display: "Roboto Flex", "Roboto", system-ui, sans-serif; --pa-font-modal: "Inter", "Roboto", system-ui, sans-serif; --pa-radius-xs: 2px; --pa-radius-sm: 4px; --pa-radius-lg: 8px; --pa-radius-pill: 16px; --pa-elev-1: 0 1px 2px 0 rgba(0,0,0,0.05), 0 1px 1px -1px rgba(0,0,0,0.05); --pa-elev-2: 0 1px 5px 0 rgba(0,0,0,0.12),
+               0 2px 2px 0 rgba(0,0,0,0.14),
+               0 3px 1px -2px rgba(0,0,0,0.20); --pa-elev-card: 0 10px 13px -5px rgba(0,0,0,0.05),
+                  0 4px 5px -6px rgba(0,0,0,0.05); --pa-elev-raised: 0 20px 25px -5px rgba(0,0,0,0.10),
+                    0 8px 10px -6px rgba(0,0,0,0.10); --pa-elev-modal: 0 9px 46px 8px rgba(0,0,0,0.12),
+                   0 24px 38px 3px rgba(0,0,0,0.14),
+                   0 11px 15px -7px rgba(0,0,0,0.20); --pa-s-1: 4px; --pa-s-2: 8px; --pa-s-3: 12px; --pa-s-4: 16px; --pa-s-5: 20px; --pa-s-6: 24px; --pa-s-8: 32px; --pa-s-10: 40px; --pa-s-15: 60px; }
+.pa-page-title { font-family: var(--pa-font-sans); font-weight: 400; font-size: 26px; line-height: 34px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--pa-primary); margin: 0px; }
+.pa-screen-title { font-family: var(--pa-font-sans); font-weight: 400; font-size: 22px; line-height: 30px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--pa-ink); margin: 0px; }
+.pa-modal-title { font-family: var(--pa-font-modal); font-weight: 500; font-size: 20px; line-height: 26px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--pa-ink); margin: 0px; }
+.pa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 32px; padding: 0px 16px; border-radius: var(--pa-radius-sm); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; font-family: var(--pa-font-sans); font-weight: 500; font-size: 12px; line-height: 100%; letter-spacing: 0px; text-transform: uppercase; cursor: pointer; user-select: none; position: relative; isolation: isolate; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1); }
+.pa-btn::after { content: ""; position: absolute; inset: 0px; border-radius: inherit; background: transparent; pointer-events: none; z-index: 1; }
+.pa-btn > * { position: relative; z-index: 2; }
+.pa-btn--primary { background: var(--pa-primary); color: rgb(255, 255, 255); box-shadow: var(--pa-elev-2); }
+.pa-btn--primary:hover::after { background: rgba(255, 255, 255, 0.08); }
+.pa-btn--primary:active::after { background: rgba(0, 0, 0, 0.24); }
+.pa-btn--secondary { background: rgb(255, 255, 255); color: var(--pa-primary); border: 1px solid var(--pa-primary); }
+.pa-btn--secondary:hover::after { background: var(--pa-primary-04a); }
+.pa-btn--secondary:active::after { background: rgba(25, 118, 210, 0.24); }
+.pa-btn--tertiary { background: transparent; color: var(--pa-primary); }
+.pa-btn--tertiary:hover::after { background: var(--pa-primary-04a); }
+.pa-btn--tertiary:active::after { background: rgba(25, 118, 210, 0.24); }
+.pa-btn[disabled] { opacity: 0.3; pointer-events: none; box-shadow: none; }
+a.pa-btn, a.pa-btn:hover { text-decoration: none; }
+a.pa-btn--primary, a.pa-btn--primary:hover { color: rgb(255, 255, 255); }
+.pa-icon-btn { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--pa-ink-2); transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1); }
+.pa-icon-btn i { font-size: 19px; }
+.pa-icon-btn:hover { background: rgba(33, 33, 33, 0.06); }
+.pa-icon-btn--sm { width: 32px; height: 32px; }
+.pa-chip { display: inline-flex; align-items: center; justify-content: center; height: 28px; padding: 0px 12px; border-radius: var(--pa-radius-pill); font-family: var(--pa-font-display); font-weight: 700; font-size: 10.8px; line-height: 16.2px; text-transform: uppercase; background: var(--pa-line-2); color: var(--pa-ink); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; user-select: none; position: relative; isolation: isolate; }
+.pa-chip::after { content: ""; position: absolute; inset: 0px; border-radius: inherit; pointer-events: none; }
+.pa-chip > * { position: relative; z-index: 2; }
+.pa-chip--selected { background: var(--pa-primary-12a); color: var(--pa-primary); }
+.pa-chip:hover.pa-chip--selected::after { background: var(--pa-primary-04a); }
+.pa-chip:hover:not(.pa-chip--selected)::after { background: rgba(33, 33, 33, 0.04); }
+.pa-chip[disabled] { opacity: 0.3; pointer-events: none; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--pa-avatar-green); color: rgb(255, 255, 255); display: inline-flex; align-items: center; justify-content: center; font-family: var(--pa-font-sans); font-weight: 500; font-size: 12px; flex: 0 0 auto; }
+.search { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0px 12px; background: rgb(255, 255, 255); border: 1px solid var(--pa-divider); border-radius: var(--pa-radius-sm); width: 280px; box-sizing: border-box; }
+.search input { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; outline: none; background: transparent; font-family: var(--pa-font-display); font-size: 13px; flex: 1 1 0%; min-width: 0px; color: var(--pa-ink); }
+.search input::placeholder { color: var(--pa-ink-6); }
+.pa-card { background: rgb(255, 255, 255); border: 1px solid var(--pa-divider); border-radius: var(--pa-radius-sm); box-shadow: var(--pa-elev-1); }
+.pa-toast { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--pa-radius-sm); font-family: var(--pa-font-sans); font-size: 14px; color: var(--pa-ink); background: rgb(255, 255, 255); border-left: 4px solid var(--pa-primary); box-shadow: var(--pa-elev-raised); }
+.pa-toast__icon { font-size: 20px; display: inline-flex; }
+.topbar { height: 56px; background: rgb(255, 255, 255); border-bottom: 1px solid var(--pa-divider); display: flex; align-items: center; padding: 0px 24px; gap: 16px; }
+.topbar__btn { width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--pa-ink-2); cursor: pointer; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; }
+.topbar__btn:hover { background: rgba(0, 0, 0, 0.04); }
+.sb { width: 230px; flex-shrink: 0; background: var(--pa-sidebar-bg); color: rgb(255, 255, 255); font-family: var(--pa-font-sans); display: flex; flex-direction: column; }
+.sb__head { padding: 18px 14px; display: flex; align-items: center; justify-content: space-between; }
+.sb__collapse { color: rgba(255, 255, 255, 0.6); cursor: pointer; }
+.sb__section { padding: 4px 0px; }
+.sb__item { display: flex; align-items: center; gap: 14px; padding: 12px 18px; font-size: 14px; color: rgba(255, 255, 255, 0.9); cursor: pointer; user-select: none; }
+.sb__item i { font-size: 20px; }
+.sb__item__chev { margin-left: auto; font-size: 18px; opacity: 0.6; }
+.sb__item--active { background: var(--pa-sidebar-active); }
+.sb__item:hover:not(.sb__item--active) { background: rgba(255, 255, 255, 0.06); }
+.sb__sub { padding: 2px 0px 8px; }
+.sb__sub-item { display: flex; padding: 8px 18px 8px 54px; font-size: 13px; color: rgba(255, 255, 255, 0.72); cursor: pointer; }
+.sb__sub-item--active { background: var(--pa-sidebar-active); color: rgb(255, 255, 255); }
+.sb__sub-item:hover:not(.sb__sub-item--active) { color: rgb(255, 255, 255); }
+.pa-tabs { display: flex; align-items: stretch; height: 48px; background: var(--pa-primary); color: rgb(255, 255, 255); }
+.pa-tabs__btn { flex: 1 1 0%; height: 100%; padding: 0px 16px; display: inline-flex; align-items: center; justify-content: center; font-family: var(--pa-font-sans); font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255, 255, 255); background: transparent; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; }
+.pa-tabs__btn--active { background: var(--pa-primary-700); }
+.pa-tabs__btn:hover:not(.pa-tabs__btn--active) { background: rgba(255, 255, 255, 0.06); }
+html, body { height: 100%; margin: 0px; }
+body { background: var(--pa-paper); font-family: var(--pa-font-sans); color: var(--pa-ink); -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+.topbar { height: 56px; background: rgb(255, 255, 255); border-bottom: 1px solid var(--pa-divider); display: flex; align-items: center; padding: 0px 24px; gap: 16px; }
+.topbar .search { width: auto; }
+.topbar .search input { flex: 1 1 0%; }
+.topbar__btn { width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--pa-ink-2); cursor: pointer; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; }
+.topbar__btn:hover { background: rgba(0, 0, 0, 0.04); }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--pa-avatar-green); color: rgb(255, 255, 255); display: inline-flex; align-items: center; justify-content: center; font-weight: 500; font-size: 12px; }
+.search { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0px 12px; background: rgb(255, 255, 255); border: 1px solid var(--pa-divider); border-radius: 4px; width: 280px; }
+.search input { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; outline: none; background: transparent; font-family: var(--pa-font-display); font-size: 13px; flex: 1 1 0%; color: var(--pa-ink); }
+.content { padding: 24px 16px; background: rgb(255, 255, 255); flex: 1 1 0%; }
+.sb { width: 230px; background: var(--pa-sidebar-bg); color: rgb(255, 255, 255); font-family: var(--pa-font-sans); flex-shrink: 0; display: flex; flex-direction: column; }
+.sb__head { padding: 18px 14px; display: flex; align-items: center; justify-content: space-between; }
+.sb__collapse { color: rgba(255, 255, 255, 0.6); cursor: pointer; }
+.sb__section { padding: 4px 0px; }
+.sb__item { display: flex; align-items: center; gap: 14px; padding: 12px 18px; font-size: 14px; color: rgb(255, 255, 255); cursor: pointer; user-select: none; }
+.sb__item i { font-size: 20px; }
+.sb__item__chev { margin-left: auto; font-size: 18px; opacity: 0.6; }
+.sb__item--active { background: var(--pa-sidebar-active); }
+.sb__item:hover:not(.sb__item--active) { background: rgba(255, 255, 255, 0.06); }
+.sb__sub { padding: 2px 0px 8px; }
+.sb__sub-item { display: flex; padding: 8px 18px 8px 54px; font-size: 13px; color: rgba(255, 255, 255, 0.72); cursor: pointer; }
+.sb__sub-item--active { background: var(--pa-sidebar-active); color: rgb(255, 255, 255); }
+.sb__sub-item:hover:not(.sb__sub-item--active) { color: rgb(255, 255, 255); }
+
+/* ===== Icons: Material Design Icons, only the 44 used ===== */
+.mdi{display:inline-block;line-height:1;font-style:normal}
+.mdi::before{content:"";display:inline-block;width:1em;height:1em;vertical-align:-0.125em;background-color:currentColor;-webkit-mask:var(--mdi) center/contain no-repeat;mask:var(--mdi) center/contain no-repeat}
+.mdi-account-box-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%2C19H5V5H19M19%2C3H5A2%2C2%200%200%2C0%203%2C5V19A2%2C2%200%200%2C0%205%2C21H19A2%2C2%200%200%2C0%2021%2C19V5C21%2C3.89%2020.1%2C3%2019%2C3M16.5%2C16.25C16.5%2C14.75%2013.5%2C14%2012%2C14C10.5%2C14%207.5%2C14.75%207.5%2C16.25V17H16.5M12%2C12.25A2.25%2C2.25%200%200%2C0%2014.25%2C10A2.25%2C2.25%200%200%2C0%2012%2C7.75A2.25%2C2.25%200%200%2C0%209.75%2C10A2.25%2C2.25%200%200%2C0%2012%2C12.25Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-account-group-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2C5A3.5%2C3.5%200%200%2C0%208.5%2C8.5A3.5%2C3.5%200%200%2C0%2012%2C12A3.5%2C3.5%200%200%2C0%2015.5%2C8.5A3.5%2C3.5%200%200%2C0%2012%2C5M12%2C7A1.5%2C1.5%200%200%2C1%2013.5%2C8.5A1.5%2C1.5%200%200%2C1%2012%2C10A1.5%2C1.5%200%200%2C1%2010.5%2C8.5A1.5%2C1.5%200%200%2C1%2012%2C7M5.5%2C8A2.5%2C2.5%200%200%2C0%203%2C10.5C3%2C11.44%203.53%2C12.25%204.29%2C12.68C4.65%2C12.88%205.06%2C13%205.5%2C13C5.94%2C13%206.35%2C12.88%206.71%2C12.68C7.08%2C12.47%207.39%2C12.17%207.62%2C11.81C6.89%2C10.86%206.5%2C9.7%206.5%2C8.5C6.5%2C8.41%206.5%2C8.31%206.5%2C8.22C6.2%2C8.08%205.86%2C8%205.5%2C8M18.5%2C8C18.14%2C8%2017.8%2C8.08%2017.5%2C8.22C17.5%2C8.31%2017.5%2C8.41%2017.5%2C8.5C17.5%2C9.7%2017.11%2C10.86%2016.38%2C11.81C16.5%2C12%2016.63%2C12.15%2016.78%2C12.3C16.94%2C12.45%2017.1%2C12.58%2017.29%2C12.68C17.65%2C12.88%2018.06%2C13%2018.5%2C13C18.94%2C13%2019.35%2C12.88%2019.71%2C12.68C20.47%2C12.25%2021%2C11.44%2021%2C10.5A2.5%2C2.5%200%200%2C0%2018.5%2C8M12%2C14C9.66%2C14%205%2C15.17%205%2C17.5V19H19V17.5C19%2C15.17%2014.34%2C14%2012%2C14M4.71%2C14.55C2.78%2C14.78%200%2C15.76%200%2C17.5V19H3V17.07C3%2C16.06%203.69%2C15.22%204.71%2C14.55M19.29%2C14.55C20.31%2C15.22%2021%2C16.06%2021%2C17.07V19H24V17.5C24%2C15.76%2021.22%2C14.78%2019.29%2C14.55M12%2C16C13.53%2C16%2015.24%2C16.5%2016.23%2C17H7.77C8.76%2C16.5%2010.47%2C16%2012%2C16Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-account-multiple-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13.07%2010.41A5%205%200%200%200%2013.07%204.59A3.39%203.39%200%200%201%2015%204A3.5%203.5%200%200%201%2015%2011A3.39%203.39%200%200%201%2013.07%2010.41M5.5%207.5A3.5%203.5%200%201%201%209%2011A3.5%203.5%200%200%201%205.5%207.5M7.5%207.5A1.5%201.5%200%201%200%209%206A1.5%201.5%200%200%200%207.5%207.5M16%2017V19H2V17S2%2013%209%2013%2016%2017%2016%2017M14%2017C13.86%2016.22%2012.67%2015%209%2015S4.07%2016.31%204%2017M15.95%2013A5.32%205.32%200%200%201%2018%2017V19H22V17S22%2013.37%2015.94%2013Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-account-tie-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M16.36%2012.76C18.31%2013.42%2020%2014.5%2020%2016V21H4V16C4%2014.5%205.69%2013.42%207.65%2012.76L8.27%2014L8.5%2014.5C7%2014.96%205.9%2015.62%205.9%2016V19.1H10.12L11%2014.03L10.06%2012.15C10.68%2012.08%2011.33%2012.03%2012%2012.03C12.67%2012.03%2013.32%2012.08%2013.94%2012.15L13%2014.03L13.88%2019.1H18.1V16C18.1%2015.62%2017%2014.96%2015.5%2014.5L15.73%2014L16.36%2012.76M12%205C10.9%205%2010%205.9%2010%207C10%208.1%2010.9%209%2012%209C13.1%209%2014%208.1%2014%207C14%205.9%2013.1%205%2012%205M12%2011C9.79%2011%208%209.21%208%207C8%204.79%209.79%203%2012%203C14.21%203%2016%204.79%2016%207C16%209.21%2014.21%2011%2012%2011Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-arrow-right{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M4%2C11V13H16L10.5%2C18.5L11.92%2C19.92L19.84%2C12L11.92%2C4.08L10.5%2C5.5L16%2C11H4Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-bell-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%2021H14C14%2022.1%2013.1%2023%2012%2023S10%2022.1%2010%2021M21%2019V20H3V19L5%2017V11C5%207.9%207%205.2%2010%204.3V4C10%202.9%2010.9%202%2012%202S14%202.9%2014%204V4.3C17%205.2%2019%207.9%2019%2011V17L21%2019M17%2011C17%208.2%2014.8%206%2012%206S7%208.2%207%2011V18H17V11Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-calendar-alert{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M6%201V3H5C3.89%203%203%203.89%203%205V19C3%2020.11%203.9%2021%205%2021H19C20.11%2021%2021%2020.11%2021%2019V5C21%203.9%2020.11%203%2019%203H18V1H16V3H8V1H6M5%208H19V19H5V8M11%209V14H13V9H11M11%2016V18H13V16H11Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-calendar-blank-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%203H18V1H16V3H8V1H6V3H5C3.89%203%203%203.9%203%205V19C3%2020.11%203.9%2021%205%2021H19C20.11%2021%2021%2020.11%2021%2019V5C21%203.9%2020.11%203%2019%203M19%2019H5V9H19V19M19%207H5V5H19V7Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-calendar-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2012H17V17H12V12M19%203H18V1H16V3H8V1H6V3H5C3.9%203%203%203.9%203%205V19C3%2020.1%203.9%2021%205%2021H19C20.1%2021%2021%2020.1%2021%2019V5C21%203.9%2020.1%203%2019%203M19%205V7H5V5H19M5%2019V9H19V19H5Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-certificate-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%2021L15%2020L17%2021V14H13M17%209V7L15%208L13%207V9L11%2010L13%2011V13L15%2012L17%2013V11L19%2010M20%203H4A2%202%200%200%200%202%205V15A2%202%200%200%200%204%2017H11V15H4V5H20V15H19V17H20A2%202%200%200%200%2022%2015V5A2%202%200%200%200%2020%203M11%208H5V6H11M9%2011H5V9H9M11%2014H5V12H11Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chart-bar{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2C21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chart-box-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9%2017H7V10H9V17M13%2017H11V7H13V17M17%2017H15V13H17V17M19%2019H5V5H19V19.1M19%203H5C3.9%203%203%203.9%203%205V19C3%2020.1%203.9%2021%205%2021H19C20.1%2021%2021%2020.1%2021%2019V5C21%203.9%2020.1%203%2019%203Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chart-line{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M16%2C11.78L20.24%2C4.45L21.97%2C5.45L16.74%2C14.5L10.23%2C10.75L5.46%2C19H22V21H2V3H4V17.54L9.5%2C8L16%2C11.78Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-check-circle{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%202C6.5%202%202%206.5%202%2012S6.5%2022%2012%2022%2022%2017.5%2022%2012%2017.5%202%2012%202M10%2017L5%2012L6.41%2010.59L10%2014.17L17.59%206.58L19%208L10%2017Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-checkbox-blank-circle-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2C20A8%2C8%200%200%2C1%204%2C12A8%2C8%200%200%2C1%2012%2C4A8%2C8%200%200%2C1%2020%2C12A8%2C8%200%200%2C1%2012%2C20M12%2C2A10%2C10%200%200%2C0%202%2C12A10%2C10%200%200%2C0%2012%2C22A10%2C10%200%200%2C0%2022%2C12A10%2C10%200%200%2C0%2012%2C2Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chevron-down{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M7.41%2C8.58L12%2C13.17L16.59%2C8.58L18%2C10L12%2C16L6%2C10L7.41%2C8.58Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chevron-left{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%2C16.58L10.83%2C12L15.41%2C7.41L14%2C6L8%2C12L14%2C18L15.41%2C16.58Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chevron-right{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M8.59%2C16.58L13.17%2C12L8.59%2C7.41L10%2C6L16%2C12L10%2C18L8.59%2C16.58Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-chevron-up{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M7.41%2C15.41L12%2C10.83L16.59%2C15.41L18%2C14L12%2C8L6%2C14L7.41%2C15.41Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-clipboard-text-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%2C3H14.82C14.25%2C1.44%2012.53%2C0.64%2011%2C1.2C10.14%2C1.5%209.5%2C2.16%209.18%2C3H5A2%2C2%200%200%2C0%203%2C5V19A2%2C2%200%200%2C0%205%2C21H19A2%2C2%200%200%2C0%2021%2C19V5A2%2C2%200%200%2C0%2019%2C3M12%2C3A1%2C1%200%200%2C1%2013%2C4A1%2C1%200%200%2C1%2012%2C5A1%2C1%200%200%2C1%2011%2C4A1%2C1%200%200%2C1%2012%2C3M7%2C7H17V5H19V19H5V5H7V7M17%2C11H7V9H17V11M15%2C15H7V13H15V15Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-close-circle{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2C2C17.53%2C2%2022%2C6.47%2022%2C12C22%2C17.53%2017.53%2C22%2012%2C22C6.47%2C22%202%2C17.53%202%2C12C2%2C6.47%206.47%2C2%2012%2C2M15.59%2C7L12%2C10.59L8.41%2C7L7%2C8.41L10.59%2C12L7%2C15.59L8.41%2C17L12%2C13.41L15.59%2C17L17%2C15.59L13.41%2C12L17%2C8.41L15.59%2C7Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-close{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%2C6.41L17.59%2C5L12%2C10.59L6.41%2C5L5%2C6.41L10.59%2C12L5%2C17.59L6.41%2C19L12%2C13.41L17.59%2C19L19%2C17.59L13.41%2C12L19%2C6.41Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-file-document-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M6%2C2A2%2C2%200%200%2C0%204%2C4V20A2%2C2%200%200%2C0%206%2C22H18A2%2C2%200%200%2C0%2020%2C20V8L14%2C2H6M6%2C4H13V9H18V20H6V4M8%2C12V14H16V12H8M8%2C16V18H13V16H8Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-file-tree-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2013H7V18H12V20H5V10H7V11H12V13M8%204V6H4V4H8M10%202H2V8H10V2M20%2011V13H16V11H20M22%209H14V15H22V9M20%2018V20H16V18H20M22%2016H14V22H22V16Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-filter-remove-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.73%2C20.83L17.58%2C18L14.73%2C15.17L16.15%2C13.76L19%2C16.57L21.8%2C13.76L23.22%2C15.17L20.41%2C18L23.22%2C20.83L21.8%2C22.24L19%2C19.4L16.15%2C22.24L14.73%2C20.83M13%2C19.88C13.04%2C20.18%2012.94%2C20.5%2012.71%2C20.71C12.32%2C21.1%2011.69%2C21.1%2011.3%2C20.71L7.29%2C16.7C7.06%2C16.47%206.96%2C16.16%207%2C15.87V10.75L2.21%2C4.62C1.87%2C4.19%201.95%2C3.56%202.38%2C3.22C2.57%2C3.08%202.78%2C3%203%2C3V3H17V3C17.22%2C3%2017.43%2C3.08%2017.62%2C3.22C18.05%2C3.56%2018.13%2C4.19%2017.79%2C4.62L13%2C10.75V19.88M5.04%2C5L9%2C10.06V15.58L11%2C17.58V10.05L14.96%2C5H5.04Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-hammer-wrench{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13.78%2015.3L19.78%2021.3L21.89%2019.14L15.89%2013.14L13.78%2015.3M17.5%2010.1C17.11%2010.1%2016.69%2010.05%2016.36%209.91L4.97%2021.25L2.86%2019.14L10.27%2011.74L8.5%209.96L7.78%2010.66L6.33%209.25V12.11L5.63%2012.81L2.11%209.25L2.81%208.55H5.62L4.22%207.14L7.78%203.58C8.95%202.41%2010.83%202.41%2012%203.58L9.89%205.74L11.3%207.14L10.59%207.85L12.38%209.63L14.2%207.75C14.06%207.42%2014%207%2014%206.63C14%204.66%2015.56%203.11%2017.5%203.11C18.09%203.11%2018.61%203.25%2019.08%203.53L16.41%206.2L17.91%207.7L20.58%205.03C20.86%205.5%2021%206%2021%206.63C21%208.55%2019.45%2010.1%2017.5%2010.1Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-handshake-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M21.71%208.71C22.96%207.46%2022.39%206%2021.71%205.29L18.71%202.29C17.45%201.04%2016%201.61%2015.29%202.29L13.59%204H11C9.1%204%208%205%207.44%206.15L3%2010.59V14.59L2.29%2015.29C1.04%2016.55%201.61%2018%202.29%2018.71L5.29%2021.71C5.83%2022.25%206.41%2022.45%206.96%2022.45C7.67%2022.45%208.32%2022.1%208.71%2021.71L11.41%2019H15C16.7%2019%2017.56%2017.94%2017.87%2016.9C19%2016.6%2019.62%2015.74%2019.87%2014.9C21.42%2014.5%2022%2013.03%2022%2012V9H21.41L21.71%208.71M20%2012C20%2012.45%2019.81%2013%2019%2013L18%2013L18%2014C18%2014.45%2017.81%2015%2017%2015L16%2015L16%2016C16%2016.45%2015.81%2017%2015%2017H10.59L7.31%2020.28C7%2020.57%206.82%2020.4%206.71%2020.29L3.72%2017.31C3.43%2017%203.6%2016.82%203.71%2016.71L5%2015.41V11.41L7%209.41V11C7%2012.21%207.8%2014%2010%2014S13%2012.21%2013%2011H20V12M20.29%207.29L18.59%209H11V11C11%2011.45%2010.81%2012%2010%2012S9%2011.45%209%2011V8C9%207.54%209.17%206%2011%206H14.41L16.69%203.72C17%203.43%2017.18%203.6%2017.29%203.71L20.28%206.69C20.57%207%2020.4%207.18%2020.29%207.29Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-history{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13.5%2C8H12V13L16.28%2C15.54L17%2C14.33L13.5%2C12.25V8M13%2C3A9%2C9%200%200%2C0%204%2C12H1L4.96%2C16.03L9%2C12H6A7%2C7%200%200%2C1%2013%2C5A7%2C7%200%200%2C1%2020%2C12A7%2C7%200%200%2C1%2013%2C19C11.07%2C19%209.32%2C18.21%208.06%2C16.94L6.64%2C18.36C8.27%2C20%2010.5%2C21%2013%2C21A9%2C9%200%200%2C0%2022%2C12A9%2C9%200%200%2C0%2013%2C3%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-image-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%2C19H5V5H19M19%2C3H5A2%2C2%200%200%2C0%203%2C5V19A2%2C2%200%200%2C0%205%2C21H19A2%2C2%200%200%2C0%2021%2C19V5A2%2C2%200%200%2C0%2019%2C3M13.96%2C12.29L11.21%2C15.83L9.25%2C13.47L6.5%2C17H17.5L13.96%2C12.29Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-information-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M11%2C9H13V7H11M12%2C20C7.59%2C20%204%2C16.41%204%2C12C4%2C7.59%207.59%2C4%2012%2C4C16.41%2C4%2020%2C7.59%2020%2C12C20%2C16.41%2016.41%2C20%2012%2C20M12%2C2A10%2C10%200%200%2C0%202%2C12A10%2C10%200%200%2C0%2012%2C22A10%2C10%200%200%2C0%2022%2C12A10%2C10%200%200%2C0%2012%2C2M11%2C17H13V11H11V17Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-layers-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2C18.54L19.37%2C12.8L21%2C14.07L12%2C21.07L3%2C14.07L4.62%2C12.81L12%2C18.54M12%2C16L3%2C9L12%2C2L21%2C9L12%2C16M12%2C4.53L6.26%2C9L12%2C13.47L17.74%2C9L12%2C4.53Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-magnify{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9.5%2C3A6.5%2C6.5%200%200%2C1%2016%2C9.5C16%2C11.11%2015.41%2C12.59%2014.44%2C13.73L14.71%2C14H15.5L20.5%2C19L19%2C20.5L14%2C15.5V14.71L13.73%2C14.44C12.59%2C15.41%2011.11%2C16%209.5%2C16A6.5%2C6.5%200%200%2C1%203%2C9.5A6.5%2C6.5%200%200%2C1%209.5%2C3M9.5%2C5C7%2C5%205%2C7%205%2C9.5C5%2C12%207%2C14%209.5%2C14C12%2C14%2014%2C12%2014%2C9.5C14%2C7%2012%2C5%209.5%2C5Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-map-marker-multiple-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M11.5%209C11.5%207.62%2012.62%206.5%2014%206.5C15.1%206.5%2016.03%207.21%2016.37%208.19C16.45%208.45%2016.5%208.72%2016.5%209C16.5%2010.38%2015.38%2011.5%2014%2011.5C12.91%2011.5%2012%2010.81%2011.64%209.84C11.55%209.58%2011.5%209.29%2011.5%209M5%209C5%2013.5%2010.08%2019.66%2011%2020.81L10%2022C10%2022%203%2014.25%203%209C3%205.83%205.11%203.15%208%202.29C6.16%203.94%205%206.33%205%209M14%202C17.86%202%2021%205.13%2021%209C21%2014.25%2014%2022%2014%2022C14%2022%207%2014.25%207%209C7%205.13%2010.14%202%2014%202M14%204C11.24%204%209%206.24%209%209C9%2010%209%2012%2014%2018.71C19%2012%2019%2010%2019%209C19%206.24%2016.76%204%2014%204Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-map-marker-off-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M20%2019.7L3.3%203L2%204.3L5.2%207.5C5.1%208%205%208.5%205%209C5%2014.2%2012%2022%2012%2022S13.7%2020.1%2015.4%2017.6L18.8%2021L20%2019.7M12%2018.7C7.4%2012.5%207%2010.4%207%209.3L13.8%2016.1C13.3%2016.9%2012.7%2017.7%2012%2018.7M8.4%205.6L7%204.2C8.2%202.8%2010%202%2012%202C15.9%202%2019%205.1%2019%209C19%2010.7%2018.3%2012.6%2017.3%2014.5L15.8%2013C17%2010.6%2017%209.6%2017%209C17%206.2%2014.8%204%2012%204C10.6%204%209.3%204.6%208.4%205.6M12%206.5C13.4%206.5%2014.5%207.6%2014.5%209C14.5%209.7%2014.2%2010.4%2013.7%2010.9L10.2%207.4C10.6%206.8%2011.3%206.5%2012%206.5Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-map-marker-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2C6.5A2.5%2C2.5%200%200%2C1%2014.5%2C9A2.5%2C2.5%200%200%2C1%2012%2C11.5A2.5%2C2.5%200%200%2C1%209.5%2C9A2.5%2C2.5%200%200%2C1%2012%2C6.5M12%2C2A7%2C7%200%200%2C1%2019%2C9C19%2C14.25%2012%2C22%2012%2C22C12%2C22%205%2C14.25%205%2C9A7%2C7%200%200%2C1%2012%2C2M12%2C4A5%2C5%200%200%2C0%207%2C9C7%2C10%207%2C12%2012%2C18.71C17%2C12%2017%2C10%2017%2C9A5%2C5%200%200%2C0%2012%2C4Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-menu-down{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M7%2C10L12%2C15L17%2C10H7Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-minus-circle-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2C20C7.59%2C20%204%2C16.41%204%2C12C4%2C7.59%207.59%2C4%2012%2C4C16.41%2C4%2020%2C7.59%2020%2C12C20%2C16.41%2016.41%2C20%2012%2C20M12%2C2A10%2C10%200%200%2C0%202%2C12A10%2C10%200%200%2C0%2012%2C22A10%2C10%200%200%2C0%2022%2C12A10%2C10%200%200%2C0%2012%2C2M7%2C13H17V11H7%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-plus{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%2C13H13V19H11V13H5V11H11V5H13V11H19V13Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-poll{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M3%2C22V8H7V22H3M10%2C22V2H14V22H10M17%2C22V14H21V22H17Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-text-box-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M5%2C3C3.89%2C3%203%2C3.89%203%2C5V19C3%2C20.11%203.89%2C21%205%2C21H19C20.11%2C21%2021%2C20.11%2021%2C19V5C21%2C3.89%2020.11%2C3%2019%2C3H5M5%2C5H19V19H5V5M7%2C7V9H17V7H7M7%2C11V13H17V11H7M7%2C15V17H14V15H7Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-tools{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M21.71%2020.29L20.29%2021.71A1%201%200%200%201%2018.88%2021.71L7%209.85A3.81%203.81%200%200%201%206%2010A4%204%200%200%201%202.22%204.7L4.76%207.24L5.29%206.71L6.71%205.29L7.24%204.76L4.7%202.22A4%204%200%200%201%2010%206A3.81%203.81%200%200%201%209.85%207L21.71%2018.88A1%201%200%200%201%2021.71%2020.29M2.29%2018.88A1%201%200%200%200%202.29%2020.29L3.71%2021.71A1%201%200%200%200%205.12%2021.71L10.59%2016.25L7.76%2013.42M20%202L16%204V6L13.83%208.17L15.83%2010.17L18%208H20L22%204Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-video-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15%2C8V16H5V8H15M16%2C6H4A1%2C1%200%200%2C0%203%2C7V17A1%2C1%200%200%2C0%204%2C18H16A1%2C1%200%200%2C0%2017%2C17V13.5L21%2C17.5V6.5L17%2C10.5V7A1%2C1%200%200%2C0%2016%2C6Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-view-grid-outline{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M3%2011H11V3H3M5%205H9V9H5M13%2021H21V13H13M15%2015H19V19H15M3%2021H11V13H3M5%2015H9V19H5M13%203V11H21V3M19%209H15V5H19Z%22%2F%3E%3C%2Fsvg%3E")}
+.mdi-web{--mdi:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M16.36%2C14C16.44%2C13.34%2016.5%2C12.68%2016.5%2C12C16.5%2C11.32%2016.44%2C10.66%2016.36%2C10H19.74C19.9%2C10.64%2020%2C11.31%2020%2C12C20%2C12.69%2019.9%2C13.36%2019.74%2C14M14.59%2C19.56C15.19%2C18.45%2015.65%2C17.25%2015.97%2C16H18.92C17.96%2C17.65%2016.43%2C18.93%2014.59%2C19.56M14.34%2C14H9.66C9.56%2C13.34%209.5%2C12.68%209.5%2C12C9.5%2C11.32%209.56%2C10.65%209.66%2C10H14.34C14.43%2C10.65%2014.5%2C11.32%2014.5%2C12C14.5%2C12.68%2014.43%2C13.34%2014.34%2C14M12%2C19.96C11.17%2C18.76%2010.5%2C17.43%2010.09%2C16H13.91C13.5%2C17.43%2012.83%2C18.76%2012%2C19.96M8%2C8H5.08C6.03%2C6.34%207.57%2C5.06%209.4%2C4.44C8.8%2C5.55%208.35%2C6.75%208%2C8M5.08%2C16H8C8.35%2C17.25%208.8%2C18.45%209.4%2C19.56C7.57%2C18.93%206.03%2C17.65%205.08%2C16M4.26%2C14C4.1%2C13.36%204%2C12.69%204%2C12C4%2C11.31%204.1%2C10.64%204.26%2C10H7.64C7.56%2C10.66%207.5%2C11.32%207.5%2C12C7.5%2C12.68%207.56%2C13.34%207.64%2C14M12%2C4.03C12.83%2C5.23%2013.5%2C6.57%2013.91%2C8H10.09C10.5%2C6.57%2011.17%2C5.23%2012%2C4.03M18.92%2C8H15.97C15.65%2C6.75%2015.19%2C5.55%2014.59%2C4.44C16.43%2C5.07%2017.96%2C6.34%2018.92%2C8M12%2C2C6.47%2C2%202%2C6.5%202%2C12A10%2C10%200%200%2C0%2012%2C22A10%2C10%200%200%2C0%2022%2C12A10%2C10%200%200%2C0%2012%2C2Z%22%2F%3E%3C%2Fsvg%3E")}
+/* ===== Page ===== */
+*{box-sizing:border-box;}
+  html,body{margin:0;background:#fff;height:auto;}
+  body{font-family:var(--pa-font-sans);color:var(--pa-ink);-webkit-font-smoothing:antialiased;}
+  a{color:var(--pa-primary);text-decoration:none;}
+  a:hover{color:var(--pa-primary-700);text-decoration:underline;}
+  button{font-family:inherit;}
+  @keyframes toastIn{from{opacity:0;transform:translate(-50%,14px);}to{opacity:1;transform:translate(-50%,0);}}
+/* ===== Change History panel ===== */
+*{box-sizing:border-box;}
+    
+    .pa-btn{text-transform:uppercase;letter-spacing:.05em;font-weight:500;height:34px;}
+    .chp-iconbtn{border:none;background:transparent;cursor:pointer;color:var(--pa-ink);width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;transition:background 150ms;}
+    .chp-iconbtn:hover{background:rgba(33,33,33,0.06);}
+    .chp-scroll::-webkit-scrollbar{width:10px;}
+    .chp-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.18);border-radius:5px;}
+    .chp-ses{flex:0 0 auto;border:1px solid var(--pa-divider);border-radius:var(--pa-radius-sm);overflow:hidden;background:#fff;}
+    .chp-seshd{display:flex;align-items:center;gap:12px;width:100%;padding:13px 16px;border:none;background:transparent;cursor:pointer;text-align:left;transition:background 150ms;}
+    .chp-seshd:hover{background:var(--pa-primary-04a);}
+    .chp-badge{display:inline-flex;align-items:center;height:19px;padding:0 8px;border-radius:var(--pa-radius-sm);font-family:var(--pa-font-sans);font-weight:600;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;}
+    .chp-box{border:1px solid #EEEEEE;border-radius:var(--pa-radius-sm);overflow:hidden;}
+    .chp-boxlbl{font-family:var(--pa-font-sans);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--pa-ink-3);padding:6px 12px;border-bottom:1px solid #EEEEEE;}
+    .chp-boxv{padding:10px 12px;font-family:var(--pa-font-display);font-size:12.5px;line-height:20px;white-space:pre-line;}
+    .chp-count{display:inline-flex;align-items:center;height:18px;padding:0 8px;border-radius:var(--pa-radius-pill);background:var(--pa-primary-12a);color:var(--pa-primary);font-family:var(--pa-font-sans);font-weight:600;font-size:10px;margin-left:8px;}
+    .chp-vf{position:relative;padding-top:18px;}
+    .chp-vf > label{position:absolute;left:0;top:18px;font-family:var(--pa-font-sans);font-size:14px;line-height:20px;color:rgba(0,0,0,0.6);pointer-events:none;transform-origin:top left;white-space:nowrap;transform:translateY(-18px) scale(0.857);transition:color 200ms cubic-bezier(.4,0,.2,1);}
+    .chp-vf:focus-within > label{color:#000;}
+    .chp-vf__ctrl{width:100%;height:26px;border:none;border-bottom:1px solid #9E9E9E;border-radius:0;background:transparent;padding:0 20px 3px 0;font-family:var(--pa-font-sans);font-size:14px;line-height:20px;color:var(--pa-ink);outline:none;transition:border-color 200ms cubic-bezier(.4,0,.2,1);}
+    .chp-vf__ctrl:focus{border-bottom:2px solid var(--pa-primary);padding-bottom:2px;}
+    select.chp-vf__ctrl{appearance:none;-webkit-appearance:none;cursor:pointer;}
+    .chp-opt:hover{background:var(--pa-primary-04a);}
+    .chp-vf__icon{position:absolute;right:0;bottom:4px;font-size:20px;color:var(--pa-ink-3);pointer-events:none;}
+    .chp-vf__ctrl::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.55;margin:0;padding:0;}
+    .chp-vf__ctrl::-webkit-inner-spin-button,.chp-vf__ctrl::-webkit-clear-button{display:none;}
+    .chp-chip{height:26px;padding:0 11px;border-radius:var(--pa-radius-pill);border:1px solid;cursor:pointer;font-family:var(--pa-font-sans);font-weight:600;font-size:10px;letter-spacing:.05em;text-transform:uppercase;transition:background 150ms;}
+    .chp-clear{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 8px;border:none;background:transparent;cursor:pointer;color:var(--pa-primary);font-family:var(--pa-font-sans);font-size:11.5px;font-weight:500;border-radius:var(--pa-radius-sm);}
+    .chp-clear:hover{background:var(--pa-primary-04a);}
+    .chp-hl{background:rgba(233,143,40,0.28);border-radius:2px;}
+    .chp-av{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-family:var(--pa-font-display);font-weight:600;font-size:11px;background:var(--pa-primary-050);color:var(--pa-primary);}
+    .pa-btn{border-radius:4px !important;} /* __om-btn-square */
+/* ===== Hover states ===== */
+.hv1:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv2:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv3:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv4:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv5:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv6:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv7:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+.hv8:hover{background:var(--pa-primary-04a) !important}
+.hv9:hover{background:var(--pa-primary-04a) !important}
+.hv10:hover{background:var(--pa-primary-04a) !important}
+.hv11:hover{background:var(--pa-primary-04a) !important}
+.hv12:hover{color:var(--pa-primary-700) !important;text-decoration:underline !important}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+// ===== Minimal component runtime =====
+// Components keep state; setState re-renders the page from template functions.
+// Event handlers are bound after each render; scroll + input focus are preserved.
+const esc = x => (x == null || x === false) ? "" : String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const T = esc, A = esc, S = x => x == null ? "" : String(x);
+let REG = [], rendering = false, pending = false, seen = new Set(), ROOT = null, APP = null, RENDER = null, mounted = false;
+const CHILDREN = new Map();
+const H = fn => { if (typeof fn !== "function") return ""; REG.push(fn); return REG.length - 1; };
+class DCLogic {
+  constructor(props) { this.props = props || {}; this.state = {}; }
+  setState(p) {
+    const n = typeof p === "function" ? p(this.state, this.props) : p;
+    if (!n || !Object.keys(n).some(k => this.state[k] !== n[k])) return;
+    this.state = Object.assign({}, this.state, n);
+    schedule();
+  }
+  forceUpdate() { schedule(); }
+}
+const schedule = () => { if (!pending) { pending = true; queueMicrotask(render); } };
+function C(name, props, style) {
+  let inst = CHILDREN.get(name);
+  if (!inst) { inst = new COMPONENTS[name].cls(props); CHILDREN.set(name, inst); }
+  inst.props = props; seen.add(name);
+  return '<div style="' + esc(style) + '">' + COMPONENTS[name].render(inst.renderVals()) + '</div>';
+}
+function keyed(attr) {
+  const m = new Map(), c = {};
+  ROOT.querySelectorAll("[" + attr + "]").forEach(el => { const k = el.getAttribute(attr); c[k] = (c[k] || 0) + 1; m.set(k + "#" + c[k], el); });
+  return m;
+}
+function render() {
+  pending = false;
+  const scroll = []; keyed("data-sk").forEach((el, k) => scroll.push([k, el.scrollTop]));
+  let focus = null; const ae = document.activeElement;
+  if (ae && ROOT.contains(ae) && ae.dataset.fk) for (const [k, el] of keyed("data-fk")) if (el === ae) { focus = { k }; try { focus.sel = [ae.selectionStart, ae.selectionEnd]; } catch (e) {} }
+  REG = []; seen = new Set(); rendering = true;
+  ROOT.innerHTML = RENDER(APP.renderVals());
+  for (const k of [...CHILDREN.keys()]) if (!seen.has(k)) CHILDREN.delete(k);
+  const sm = keyed("data-sk"); scroll.forEach(([k, top]) => { const el = sm.get(k); if (el) el.scrollTop = top; });
+  if (focus) { const el = keyed("data-fk").get(focus.k); if (el) { el.focus({ preventScroll: true }); if (focus.sel && focus.sel[0] != null) try { el.setSelectionRange(focus.sel[0], focus.sel[1]); } catch (e) {} } }
+  rendering = false;
+  const reg = REG;
+  ROOT.querySelectorAll("*").forEach(el => {
+    for (const a of el.attributes) if (a.name.startsWith("data-ev-")) {
+      const fn = reg[+a.value];
+      if (fn) el.addEventListener(a.name.slice(8), e => { if (!rendering) fn(e); });
+    }
+  });
+  if (!mounted) { mounted = true; APP.componentDidMount && APP.componentDidMount(); }
+  else APP.componentDidUpdate && APP.componentDidUpdate();
+}
+function mount(root, app, tpl) { ROOT = root; APP = app; RENDER = tpl; render(); }
+
+// ===== Change History panel =====
+class ChangeHistoryPanel extends DCLogic {
+  state = { expanded: { s1: true }, q: "", user: "", from: "", to: "", type: "all", userOpen: false, userFilter: "" };
+
+  iso(d) { const t = new Date(d + " 00:00:00"); return isNaN(t) ? "" : t.toISOString().slice(0, 10); }
+
+  matchesQuery(c, q) {
+    return [c.field, c.value, c.old, c.new].filter(Boolean).join(" ").toLowerCase().includes(q);
+  }
+
+  get SESSIONS() { return this.props.sessions || this.DEFAULT_SESSIONS; }
+  DEFAULT_SESSIONS = [
+    { id: "s1", user: "Christine Mangurio", initials: "CM", date: "Jul 18, 2026", time: "2:14 PM",
+      note: "Adjusted the enduring release and expiration window per accreditation review.",
+      notified: ["Graphics", "Content"],
+      changes: [
+        { field: "Expiration Date", type: "updated", old: "Aug 1, 2027", new: "Aug 15, 2027" },
+        { field: "Enduring Release", type: "added", value: "Sep 24, 2026" }
+      ] },
+    { id: "s2", user: "Danny Velasquez", initials: "DV", date: "Jul 17, 2026", time: "10:02 AM",
+      note: "Added the moderator and refreshed the promotional email copy for the live push.",
+      notified: ["Master", "Graphics", "Content"],
+      changes: [
+        { field: "Faculty", type: "added", value: "Delvena Thomas, DO \u2014 Speaker, Moderator" },
+        { field: "Marketing \u2014 Email Body", type: "text",
+          old: "Register today for our live webinar on refractory chronic cough. Join leading pulmonology faculty for a case-based discussion of diagnosis.",
+          new: "Register now for our live CME webinar on refractory chronic cough. Join leading pulmonology and primary care faculty for a practical, case-based discussion of diagnosis and emerging therapies." },
+        { field: "Subject Line B", type: "removed", value: "Last chance \u2014 join us tonight for the RCC symposium." }
+      ] },
+    { id: "s3", user: "Megan McLafferty", initials: "MM", date: "Jul 15, 2026", time: "4:48 PM",
+      note: "Finalized the Zoom room and join link.",
+      notified: [],
+      changes: [
+        { field: "Virtual Platform", type: "updated", old: "GoToWebinar", new: "PRIME Zoom" },
+        { field: "Join Meeting URL", type: "updated", old: "https://ehgroup.zoom.us/j/771044?pwd=old", new: "https://ehgroup.zoom.us/j/93345591080?pwd=h0xrrFYF9lWrzBSAGvLm0PjMxKzrqi.1" }
+      ] },
+    { id: "s4", user: "Sara Atcheison", initials: "SA", date: "Jul 12, 2026", time: "9:31 AM",
+      note: "Expanded the activity summary and added a guideline-directed learning objective.",
+      notified: ["Content"],
+      changes: [
+        { field: "Activity Summary", type: "text",
+          old: "A live webinar on refractory chronic cough for pulmonologists.",
+          new: "A 75-minute live, multi-accredited webinar on refractory chronic cough for pulmonologists, allergists, and primary care clinicians." },
+        { field: "Learning Objective 3", type: "added", value: "Differentiate emerging therapies for RCC in terms of mechanism of action, efficacy, and safety." }
+      ] },
+    { id: "s5", user: "Aaron Waxman", initials: "AW", date: "Jul 9, 2026", time: "1:05 PM",
+      note: "Initial activity setup and grant assignment.",
+      notified: ["Master"],
+      changes: [
+        { field: "Clinical Lead", type: "added", value: "Sara Atcheison" },
+        { field: "Grant Support", type: "added", value: "GSK; Merck" }
+      ] }
+  ];
+
+  diffTokens(oldS, newS) {
+    const tok = s => String(s).split(/(\s+)/).filter(x => x.length);
+    const a = tok(oldS), b = tok(newS), n = a.length, m = b.length;
+    const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+    for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--)
+      dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    const ops = []; let i = 0, j = 0;
+    while (i < n && j < m) {
+      if (a[i] === b[j]) { ops.push({ t: "same", s: a[i] }); i++; j++; }
+      else if (dp[i + 1][j] >= dp[i][j + 1]) { ops.push({ t: "del", s: a[i] }); i++; }
+      else { ops.push({ t: "ins", s: b[j] }); j++; }
+    }
+    while (i < n) ops.push({ t: "del", s: a[i++] });
+    while (j < m) ops.push({ t: "ins", s: b[j++] });
+    return ops.map(o => ({
+      text: o.s,
+      bg: o.t === "del" ? "var(--pa-error-bg)" : o.t === "ins" ? "var(--pa-success-bg)" : "transparent",
+      color: o.t === "del" ? "var(--pa-error)" : "var(--pa-ink)",
+      strike: o.t === "del" ? "line-through" : "none"
+    }));
+  }
+
+  changeVals(c) {
+    const badge = {
+      added: { label: "Added", bg: "var(--pa-success-bg)", color: "var(--pa-success)" },
+      removed: { label: "Removed", bg: "var(--pa-error-bg)", color: "var(--pa-error)" },
+      updated: { label: "Updated", bg: "var(--pa-primary-12a)", color: "var(--pa-primary)" },
+      text: { label: "Edited", bg: "var(--pa-primary-12a)", color: "var(--pa-primary)" }
+    }[c.type];
+    const single = c.type === "added" || c.type === "removed";
+    return {
+      hasTime: !!c.time, time: c.time || "",
+      field: c.field, badgeLabel: badge.label, badgeBg: badge.bg, badgeColor: badge.color,
+      isSingle: single, isPair: c.type === "updated", isDiff: c.type === "text",
+      singleLabel: c.type === "added" ? "New" : "Old",
+      singleValue: c.value || "",
+      singleBg: c.type === "added" ? "var(--pa-success-bg)" : "var(--pa-error-bg)",
+      singleColor: c.type === "added" ? "var(--pa-ink)" : "var(--pa-ink-3)",
+      singleStrike: c.type === "removed" ? "line-through" : "none",
+      old: c.old || "", new: c.new || "",
+      tokens: c.type === "text" ? this.diffTokens(c.old, c.new) : []
+    };
+  }
+
+  renderVals() {
+    const st = this.state;
+    const q = st.q.trim().toLowerCase();
+    const type = st.type;
+    const anyFilter = !!(q || st.user || st.from || st.to || type !== "all");
+    const set = p => this.setState(p);
+
+    const filtered = this.SESSIONS.map(s => {
+      const d = this.iso(s.date);
+      if (st.user && s.user !== st.user) return null;
+      if (st.from && d && d < st.from) return null;
+      if (st.to && d && d > st.to) return null;
+      const sessionHit = !!q && (s.user.toLowerCase().includes(q) || (s.note || "").toLowerCase().includes(q) || (s.area || "").toLowerCase().includes(q));
+      let changes = s.changes;
+      if (type !== "all") {
+        if (["added", "removed", "updated", "text"].includes(type)) changes = changes.filter(c => c.type === type);
+        else if (s.area !== type) return null;
+      }
+      if (q && !sessionHit) changes = changes.filter(c => this.matchesQuery(c, q));
+      if (!changes.length) return null;
+      return { ...s, changes };
+    }).filter(Boolean);
+
+    const areas = ["Details", "Planning", "Faculty", "Files"].filter(a => this.SESSIONS.some(x => x.area === a));
+    const typeDefs = areas.length
+      ? [["all", "All"]].concat(areas.map(a => [a, a]))
+      : [["all", "All"], ["added", "Added"], ["removed", "Removed"], ["updated", "Updated"], ["text", "Edited"]];
+
+    const sessions = filtered.map(s => {
+      const n = s.changes.length;
+      const times = s.changes.map(c => c.time).filter(Boolean);
+      const auto = times.length > 0;
+      const stamp = times.length > 1 && times[0] !== times[times.length - 1]
+        ? s.date + " · " + times[0] + " – " + times[times.length - 1] + " ET"
+        : s.date + " at " + (times[0] || s.time) + " ET";
+      return {
+        auto, stamp,
+        user: s.user, initials: s.initials, note: s.note || "", hasNote: !!s.note, area: s.area || "", hasArea: !!s.area,
+        countLabel: n + (n === 1 ? " change" : " changes"),
+        expanded: anyFilter ? true : !!this.state.expanded[s.id],
+        chev: (anyFilter || this.state.expanded[s.id]) ? "mdi-chevron-up" : "mdi-chevron-down",
+        onToggle: () => this.setState(st => ({ expanded: { ...st.expanded, [s.id]: !st.expanded[s.id] } })),
+        changes: s.changes.map(c => this.changeVals(c)),
+        notifyText: s.notified.length ? s.notified.join(", ") : "Silent",
+        notifyBg: s.notified.length ? "var(--pa-warning-bg)" : "#F0F0F0",
+        notifyColor: s.notified.length ? "var(--pa-warning)" : "var(--pa-ink-3)"
+      };
+    });
+    return {
+      sessions,
+      isEmpty: sessions.length === 0,
+      query: st.q, hasQuery: !!st.q, anyFilter,
+      fromDate: st.from, toDate: st.to,
+      userDisplay: st.userOpen ? st.userFilter : (st.user || "All users"),
+      userOpen: !!st.userOpen,
+      userList: [""].concat(Array.from(new Set(this.SESSIONS.map(x => x.user))))
+        .map(u => ({ value: u, label: u || "All users" }))
+        .filter(o => !st.userFilter || o.label.toLowerCase().includes(st.userFilter.toLowerCase()))
+        .map(o => ({ label: o.label, onPick: e => { e.preventDefault(); this.setState({ user: o.value, userOpen: false, userFilter: "" }); } })),
+      typeChips: typeDefs.map(([v, label]) => ({
+        label, onClick: () => set({ type: v }),
+        bg: type === v ? "var(--pa-primary-12a)" : "#fff",
+        color: type === v ? "var(--pa-primary)" : "var(--pa-ink-3)",
+        border: type === v ? "var(--pa-primary)" : "#DADADA"
+      })),
+      onQuery: e => set({ q: e.target.value }),
+      onClearQuery: () => set({ q: "" }),
+      onUserOpen: () => this.setState({ userOpen: true, userFilter: "" }),
+      onUserFilter: e => this.setState({ userOpen: true, userFilter: e.target.value }),
+      onUserBlur: () => this.setState({ userOpen: false, userFilter: "" }),
+      onFrom: e => set({ from: e.target.value }),
+      onTo: e => set({ to: e.target.value }),
+      onClearAll: () => set({ q: "", user: "", from: "", to: "", type: "all", userFilter: "" }),
+      countLabel: anyFilter
+        ? sessions.length + " of " + this.SESSIONS.length + " sessions"
+        : this.SESSIONS.length + " entries",
+      activityCode: this.props.activityCode ?? "23WC255",
+      recordLabel: this.props.recordLabel ?? "Activity",
+      searchPlaceholder: this.props.sessions ? "Search user, area, field, value, or note" : "Search user, field, value, or note",
+      onClose: this.props.onClose ?? (() => {})
+    };
+  }
+}
+
+// ===== Project Overview data + logic =====
+const TODAY = new Date(2026, 5, 20);
+const TABS = ["Overview","Details","Planning","Faculty","Files","Activities","Workflow"];
+const day = (y, m, d) => new Date(y, m - 1, d);
+const fmt = d => d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const daysTo = d => Math.round((d - TODAY) / 86400000);
+
+const READINESS = [
+  { key: "details", name: "Details", icon: "information-outline", tab: "Details", items: [
+    ["Project Title", "The Science of Scarcity: Translating Innovation to HIV Practice…", true],
+    ["Short Title", "HIV Hot Topics Webinars", true],
+    ["Supporters", "Merck Sharp & Dohme LLC; Gilead Sciences", true],
+    ["Grant ID/number(s)", "CME-25-202696", true],
+    ["Launch Date", "Jan 23, 2026", true],
+    ["Clinical Lead", "Shaina Vincent", true],
+    ["Operations Lead", "Stephanie Yang", true],
+    ["Strategy Lead", "Leah Molloy", true],
+    ["Creative Lead", "Matthew Philips", true],
+    ["Research Lead", "Project leads · not assigned", false],
+    ["Clinical Supervisor", "Project leads · not assigned", false],
+    ["QI Recruitment Lead", "Project leads · not assigned", false] ] },
+  { key: "planning", name: "Planning", icon: "clipboard-text-outline", tab: "Planning", items: [
+    ["Commercial Support", "Project overview", true],
+    ["Intended Audience", "Project overview", true],
+    ["Components / Activity Overview", "Project overview", true],
+    ["Learning Objectives", "Educational design · 4 objectives", true],
+    ["Agenda", "Educational design", true],
+    ["Professional practice gaps", "Accreditation narrative", true],
+    ["Educational needs", "Accreditation narrative", true],
+    ["Designed to change", "Accreditation narrative", true],
+    ["Scope of practice statement", "Accreditation narrative", false],
+    ["Educational format rationale", "Accreditation narrative", false],
+    ["Competencies addressed", "6 selected", true],
+    ["Project is designed to", "4 selected", true] ] },
+  { key: "files", name: "Launch Notes", icon: "file-document-outline", tab: "Files", items: [
+    ["Launch notes", "72261_HIV_Launch_Notes_Final.docx · Jan 20, 2026", true] ] }
+].map(r => Object.assign(r, { total: r.items.length, left: r.items.filter(i => !i[2]), done: r.items.filter(i => i[2]) }));
+
+const ACTIVITIES = [
+  { code: "72WC261", title: "Multidrug-Resistant HIV: Fast Facts for Smart Decisions", type: "Live webinar · 1.0 CE", date: day(2026,4,7), live: true, kind: "Live webinar", pct: 100, status: "Released", statusColor: "var(--pa-success)", time: "1:00 PM ET", venue: "PRIME Zoom" },
+  { code: "72WB261", title: "Multidrug-Resistant HIV: Fast Facts for Smart Decisions", type: "Online activity · from 72WC261", date: day(2026,4,23), live: false, kind: "Online activity", pct: 100, status: "Released", statusColor: "var(--pa-success)", time: "On demand", venue: "PRIME website · enduring" },
+  { code: "72WC262", title: "Advancing Equity in HIV Services: Upholding Voices and Visibility of Diverse Communities", type: "Live webinar · 1.0 CE", date: day(2026,4,29), live: true, kind: "Live webinar", pct: 100, status: "Released", statusColor: "var(--pa-success)", time: "1:00 PM ET", venue: "PRIME Zoom" },
+  { code: "72WB262", title: "Advancing Equity in HIV Services: Upholding Voices and Visibility of Diverse Communities", type: "Online activity · from 72WC262", date: day(2026,5,27), live: false, kind: "Online activity", pct: 100, status: "Released", statusColor: "var(--pa-success)", time: "On demand", venue: "PRIME website · enduring" },
+  { code: "72WC263", title: "Navigating the Evolving HIV Treatment Landscape: Strategies for Personalized Care", type: "Live webinar · 1.0 CE", date: day(2026,5,28), live: true, kind: "Live webinar", pct: 100, status: "Released", statusColor: "var(--pa-success)", time: "1:00 PM ET", venue: "PRIME Zoom" },
+  { code: "72WC264", title: "Long-Acting Injectable PrEP: Implementing New Breakthroughs Amidst Shifting Realities", type: "Live webinar · 1.0 CE", date: day(2026,6,23), live: true, kind: "Live webinar", pct: 95, status: "Submitted to PARS", statusColor: "var(--pa-warning)", time: "1:00 PM ET", venue: "PRIME Zoom" },
+  { code: "72WB263", title: "Navigating the Evolving HIV Treatment Landscape: Strategies for Personalized Care", type: "Online activity · from 72WC263", date: day(2026,6,25), live: false, kind: "Online activity", pct: 90, status: "Submitted to PARS", statusColor: "var(--pa-warning)", time: "On demand", venue: "PRIME website · enduring" },
+  { code: "72WC2611", title: "Fostering Resilience to Lead and Delegate HIV Services Through Disruption and Change", type: "Live webinar · 1.0 CE", date: day(2026,7,21), live: true, kind: "Live webinar", pct: 64, status: "In development", statusColor: "var(--pa-ink-3)", time: "1:00 PM ET", venue: "PRIME Zoom" },
+  { code: "72WB264", title: "Long-Acting Injectable PrEP: Implementing New Breakthroughs Amidst Shifting Realities", type: "Online activity · from 72WC264", date: day(2026,7,21), live: false, kind: "Online activity", pct: 55, status: "In development", statusColor: "var(--pa-ink-3)", time: "On demand", venue: "PRIME website · enduring" },
+  { code: "72WC2612", title: "Triage Thinking and Task Shifting to Scale PrEP With Limited Capacity", type: "Live webinar · 1.0 CE", date: day(2026,8,27), live: true, kind: "Live webinar", pct: 26, status: "In development", statusColor: "var(--pa-ink-3)", time: "1:00 PM ET", venue: "PRIME Zoom" },
+  { code: "72LV261", title: "Long-Acting Injectable PrEP: A Hands-On Clinical Skills Workshop", type: "Live onsite · 3.0 CE", date: day(2026,9,24), live: true, onsite: true, kind: "Live onsite", pct: 34, status: "In development", statusColor: "var(--pa-ink-3)", time: "9:00 AM ET", venue: "Emory Conference Center · Atlanta, GA", location: "Atlanta, GA", venueName: "Emory Conference Center Hotel", address: "1615 Clifton Rd NE, Atlanta, GA 30329", room: "Dogwood Ballroom" },
+  { code: "72RS261", series: true, title: "HIV Prevention on the Front Lines: Regional Symposia", type: "Regional symposium series", kind: "Regional symposium", live: true, children: [
+    { code: "72RS262", title: "HIV Prevention on the Front Lines: Charlotte", date: day(2026,9,10), time: "8:30 AM ET", venue: "Atrium Health Carolinas Medical Center · Charlotte, NC", pct: 58, visible: true, format: "In person", location: "Charlotte, NC", venueName: "Atrium Health Carolinas Medical Center", address: "1000 Blythe Blvd, Charlotte, NC 28203", room: "Education Center, Room 210", speakers: ["Monica L Reyes, MD, AAHIVS"] },
+    { code: "72RS263", title: "HIV Prevention on the Front Lines: Birmingham", date: day(2026,10,15), time: "8:30 AM CT", venue: "UAB Hospital · Birmingham, AL", pct: 30, visible: true, format: "In person", location: "Birmingham, AL", venueName: "UAB Hospital", address: "1802 6th Ave S, Birmingham, AL 35233", room: "North Pavilion Auditorium", speakers: ["Daniel K Osei, PharmD, AAHIVP"] },
+    { code: "72RS264", title: null, date: null, time: null, venue: null, pct: 5, visible: false, format: "In person", venueName: null, address: "", speakers: [] } ] },
+  { code: "72DR261", series: true, title: "Long-Acting PrEP in Practice: Grand Rounds", type: "Grand rounds series", kind: "Grand rounds", live: true, children: [
+    { code: "72DR262", title: null, date: day(2026,7,9), time: "12:00 PM ET", venue: "Grady Memorial Hospital · Atlanta, GA", pct: 78, visible: true, format: "Hybrid", location: "Atlanta, GA", venueName: "Grady Memorial Hospital", address: "80 Jesse Hill Jr Dr SE, Atlanta, GA 30303", speakers: ["Monica L Reyes, MD, AAHIVS", "Daniel K Osei, PharmD, AAHIVP"] },
+    { code: "72DR263", title: "Long-Acting PrEP in Practice: Pharmacy Workflows and Adherence Support", date: day(2026,8,13), time: "12:30 PM ET", venue: "Ponce de Leon Center · Atlanta, GA", pct: 46, visible: true, format: "In person", location: "Atlanta, GA", venueName: "Ponce de Leon Center", address: "341 Ponce de Leon Ave NE, Atlanta, GA 30308", speakers: ["Daniel K Osei, PharmD, AAHIVP", "Tamara J Whitfield, DNP, FNP-BC"] },
+    { code: "72DR264", title: null, date: null, time: null, venue: null, pct: 12, visible: false, format: "Virtual", venueName: null, address: "", speakers: [] } ] }
+];
+
+const FACULTY = [
+  { initials: "MR", name: "Monica L Reyes, MD, AAHIVS", color: "var(--pa-primary)", roles: ["Director","Speaker"], affiliation: "Associate Professor of Medicine, Division of Infectious Diseases", inActivities: "all 5 live webinars, 72RS262", docs: 10, fin: "Received", finColor: "var(--pa-success)" },
+  { initials: "DO", name: "Daniel K Osei, PharmD, AAHIVP", color: "var(--pa-success)", roles: ["Speaker"], affiliation: "Clinical Pharmacist Practitioner, HIV & Infectious Diseases Clinic", inActivities: "72WC264, 72WC2612, 72LV261, 72RS263", docs: 8, fin: "Pending", finColor: "var(--pa-error)" },
+  { initials: "TW", name: "Tamara J Whitfield, DNP, FNP-BC", color: "var(--pa-aqua-500)", roles: ["Moderator"], affiliation: "Nurse Practitioner and Director of PrEP Services, Community Health Center", inActivities: "72LV261, 72DR263", docs: 7, fin: "Received", finColor: "var(--pa-success)" }
+];
+
+const LEADS = [
+  ["Clinical Lead","Shaina Vincent"],["Creative Lead","Matthew Philips"],["Research Lead",""],
+  ["Clinical Supervisor",""],["Operations Lead","Stephanie Yang"],["Strategy Lead","Leah Molloy"],["QI Recruitment Lead",""]
+];
+
+const FEED = [
+  {"initials":"SY","user":"Stephanie Yang","where":"Faculty","stamp":"Jun 12, 2026 · 10:14 AM – 11:02 AM ET","fields":"Faculty Member added · Faculty Role updated"},
+  {"initials":"SY","user":"Stephanie Yang","where":"Faculty","stamp":"Feb 9, 2026 at 12:02 PM ET","fields":"Faculty Member added"},
+  {"initials":"LM","user":"Leah Molloy","where":"Planning","stamp":"Jan 22, 2026 at 3:54 PM ET","fields":"Misc added · Miscellaneous added · Competencies updated · Designed To updated"},
+  {"initials":"LM","user":"Leah Molloy","where":"Planning","stamp":"Jan 22, 2026 at 3:50 PM ET","fields":"Evaluation added · Skills/Strategy or Performance updated"}
+];
+
+const HISTORY = [{"id":"s1","area":"Faculty","date":"Jun 12, 2026","time":"11:02 AM","note":"Dr. Whitfield confirmed as moderator for office hours","notified":["Master","Product","Marketing","Graphics","MS","Content","Accreditation"],"changes":[{"time":"10:14 AM","field":"Faculty Member","type":"added","value":"Tamara J Whitfield, DNP, FNP-BC — Moderator"},{"time":"11:02 AM","field":"Faculty Role · Daniel K Osei, PharmD, AAHIVP","type":"updated","old":"Speaker","new":"Speaker, Moderator"}],"user":"Stephanie Yang","initials":"SY"},{"id":"s2","area":"Faculty","date":"Feb 9, 2026","time":"12:02 PM","note":"Dr. Osei confirmed as speaker","notified":["Master","Product","Marketing","Graphics","MS","Content","Accreditation"],"changes":[{"time":"12:02 PM","field":"Faculty Member","type":"added","value":"Daniel K Osei, PharmD, AAHIVP — Speaker"}],"user":"Stephanie Yang","initials":"SY"},{"id":"s3","area":"Planning","date":"Jan 22, 2026","time":"3:54 PM","note":"Added planner form","notified":[],"changes":[{"field":"Misc","type":"added","value":"Multidisciplinary, interprofessional HCPs are involved in the diagnosis, treatment, and prevention strategies that directly impact people living with or at risk for HIV."},{"field":"Miscellaneous","type":"added","value":"The live webinar format allows clinicians to access timely educational content and interact with expert faculty in real time. Online enduring activities allow busy clinicians to access content at their convenience, from multiple devices, with self-paced, independent learning."},{"field":"Competencies","type":"updated","old":"None","new":"Provide patient-centered care\nWork in interdisciplinary teams\nEmploy evidence-based practice\nInterprofessional communication\nTeams and teamwork\nPatient care\nMedical knowledge\nInterpersonal and communication skills"},{"field":"Designed To","type":"updated","old":"None","new":"Change Competence (Skills & Strategy)\nMeasure Competence (Skills & Strategy)"}],"user":"Leah Molloy","initials":"LM"},{"id":"s4","area":"Planning","date":"Jan 22, 2026","time":"3:50 PM","notified":[],"changes":[{"field":"Evaluation","type":"added","value":"This CE series bridges these educational gaps by equipping clinicians with evidence-based strategies to manage multidrug-resistant HIV, deliver equitable HIV services, personalize treatment, and scale long-acting PrEP with limited capacity. Participants will evaluate emerging data and apply practical frameworks for task shifting, triage, and team resilience in resource-constrained settings."},{"field":"Skills/Strategy or Performance","type":"text","old":"This program will equip HIV physicians, nurse practitioners, physician assistants, pharmacists, and care team members to optimize HIV treatment and prevention by applying evidence-based strategies for resistance management, long-acting regimens, and PrEP delivery in the context of shrinking clinical and financial resources.","new":"This program is designed to equip HCPs to optimize HIV treatment and prevention by applying evidence-based strategies for resistance management, long-acting regimens, and PrEP delivery in the context of shrinking clinical and financial resources."}],"user":"Leah Molloy","initials":"LM"},{"id":"s5","area":"Faculty","date":"Jan 22, 2026","time":"3:41 PM","note":"Added planners and reviewers","notified":[],"changes":[{"time":"3:12 PM","field":"Faculty Member","type":"added","value":"Shaina Vincent — Reviewer"},{"time":"3:18 PM","field":"Faculty Member","type":"added","value":"Leah Molloy — Planner"},{"time":"3:35 PM","field":"Faculty Member","type":"added","value":"Stephanie Yang — Planner"},{"time":"3:41 PM","field":"Faculty Role · Monica L Reyes, MD, AAHIVS","type":"updated","old":"Director","new":"Director, Speaker"}],"user":"Leah Molloy","initials":"LM"},{"id":"s6","area":"Planning","date":"Jan 22, 2026","time":"3:00 PM","notified":[],"changes":[{"field":"Objectives","type":"added","value":"- Apply evidence-based strategies to select and optimize regimens for people with multidrug-resistant HIV\n- Implement equitable, patient-centered approaches that improve engagement across diverse communities\n- Integrate long-acting treatment and prevention options into personalized care plans\n- Use triage and task-shifting strategies to scale PrEP delivery with limited clinical capacity"},{"field":"Relevance","type":"added","value":"Key Gaps and Educational Needs. Resistance management: Clinicians lack confidence selecting regimens for heavily treatment-experienced patients. Equity in HIV services: Persistent disparities in diagnosis, retention, and viral suppression affect underserved communities. Long-acting options: Uptake of long-acting injectable treatment and PrEP remains limited by workflow, coverage, and patient-selection barriers. Capacity constraints: Funding cuts and staffing shortages require new models for delegating care without compromising quality."},{"field":"Skills/Strategy or Performance","type":"added","value":"This program will equip HIV physicians, nurse practitioners, physician assistants, pharmacists, and care team members to optimize HIV treatment and prevention by applying evidence-based strategies for resistance management, long-acting regimens, and PrEP delivery in the context of shrinking clinical and financial resources."}],"user":"Leah Molloy","initials":"LM"},{"id":"s7","area":"Planning","date":"Jan 22, 2026","time":"2:50 PM","notified":[],"changes":[{"field":"Commercial Supporters","type":"added","value":"This activity is supported by independent educational grants from Merck Sharp & Dohme LLC and Gilead Sciences, Inc."},{"field":"Audience","type":"added","value":"HIV clinicians, including physicians, NPs, PAs, pharmacists, and care teams working in HIV treatment and prevention."},{"field":"Activity Overview","type":"added","value":"Six 1.0-hour live webinars, each followed by a live office hours session, address the most pressing challenges in HIV practice in an era of reduced resources. Each webinar is post-produced as an online enduring activity to extend reach and provide sustainability for learners unable to attend live."},{"field":"Agenda","type":"added","value":"I. Multidrug-Resistant HIV: Fast Facts for Smart Decisions\nII. Advancing Equity in HIV Services\nIII. Navigating the Evolving HIV Treatment Landscape\nIV. Long-Acting Injectable PrEP\nV. Fostering Resilience to Lead and Delegate HIV Services\nVI. Triage Thinking and Task Shifting to Scale PrEP\nVII. Conclusions and Q&A"}],"user":"Leah Molloy","initials":"LM"},{"id":"s8","area":"Files","date":"Jan 20, 2026","time":"1:20 PM","note":"Launch notes uploaded","notified":["Master","Product","Marketing","Graphics","MS","Content","Accreditation"],"changes":[{"time":"12:42 PM","field":"File","type":"added","value":"Launch notes - Final (72261_HIV_Launch_Notes_Final.docx)"},{"time":"12:58 PM","field":"File Type · 72261_HIV_Launch_Notes_Final.docx","type":"updated","old":"Other","new":"Launch Notes"},{"time":"1:20 PM","field":"File","type":"added","value":"Merck LOA - Signed (72261_Merck_LOA_signed.pdf)"}],"user":"Stephanie Yang","initials":"SY"},{"id":"s9","area":"Details","date":"Jan 20, 2026","time":"10:13 AM","notified":[],"changes":[{"field":"Clinical Lead","type":"added","value":"Shaina Vincent"}],"user":"Stephanie Yang","initials":"SY"},{"id":"s10","area":"Details","date":"Jan 20, 2026","time":"10:04 AM","notified":[],"changes":[{"field":"Creative Lead","type":"added","value":"Matthew Philips"}],"user":"Stephanie Yang","initials":"SY"},{"id":"s11","area":"Details","date":"Jan 19, 2026","time":"7:55 PM","notified":[],"changes":[{"field":"Short Title","type":"added","value":"HIV Hot Topics Webinars"},{"field":"Operations Lead","type":"added","value":"Stephanie Yang"},{"field":"Strategy Lead","type":"added","value":"Leah Molloy"}],"user":"Stephanie Yang","initials":"SY"},{"id":"s12","area":"Details","date":"Jan 19, 2026","time":"6:15 PM","notified":[],"changes":[{"field":"Project Launch Date","type":"added","value":"01/23/2026"}],"user":"Stephanie Yang","initials":"SY"}];
+
+const COMPETENCIES = ["Patient-centered care","Interdisciplinary teams","Evidence-based practice","Interprofessional communication","Teams and teamwork","Patient care","Medical knowledge","Interpersonal skills"];
+
+const RANGE_START = day(2026,10,1), RANGE_END = day(2027,1,1);
+const pos = d => Math.max(0, Math.min(100, ((d - RANGE_START) / (RANGE_END - RANGE_START)) * 100));
+
+const RCATS = [
+  ["Setup & dates", "mdi-calendar-blank-outline", ["Activity type & format","Release date","Expiration date","Time & time zone","Venue or platform","Registration settings","Capacity"]],
+  ["Content", "mdi-text-box-outline", ["Activity title","Description","Learning objectives","Target audience","Agenda","Slide deck","Handouts","Pre-reading","References"]],
+  ["Faculty", "mdi-account-group-outline", ["Faculty assigned","Faculty roles","Disclosures collected","Disclosures reviewed","Bios & headshots","Contracts signed"]],
+  ["Creative & assets", "mdi-image-outline", ["Banner image","Thumbnail","Email header","Social graphics","Slide template","Video thumbnail","Recording","Captions","Brand review"]],
+  ["Accreditation", "mdi-certificate-outline", ["Credit type & hours","Accreditation statement","Commercial support statement","Certificate","CME review"]],
+  ["Surveys & links", "mdi-chart-bar", ["Pre-test","Post-test","Evaluation survey","Follow-up survey","Registration link"]]
+];
+const RTOTAL = RCATS.reduce((n, c) => n + c[2].length, 0);
+const readinessOf = (code, pct) => {
+  let seed = 0; for (const ch of code) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  const flat = []; RCATS.forEach((c, ci) => c[2].forEach((l, ii) => flat.push({ ci, ii, s: ci * 0.12 + ii * 0.03 + rnd() })));
+  const n = Math.round(pct * RTOTAL / 100), done = new Set(flat.sort((a, b) => a.s - b.s).slice(0, n).map(f => f.ci + ":" + f.ii));
+  return RCATS.map((c, ci) => c[2].map((l, ii) => done.has(ci + ":" + ii)));
+};
+
+const FAC_ROLES = {
+  "72WC261": [[0,"Speaker"],[1,"Panelist"],[2,"Moderator"]], "72WB261": [[0,"Contributing Author"],[1,"Peer Reviewer"]],
+  "72WC262": [[0,"Speaker"],[2,"Moderator"]], "72WB262": [[0,"Contributing Author"],[1,"Peer Reviewer"]],
+  "72WC263": [[1,"Speaker"],[0,"Panelist"],[2,"Moderator"]], "72WB263": [[1,"Contributing Author"],[0,"Peer Reviewer"]],
+  "72WC264": [[0,"Speaker"],[1,"Panelist"]], "72WB264": [[0,"Contributing Author"],[2,"Peer Reviewer"]],
+  "72WC2611": [[0,"Speaker"],[2,"Moderator"]], "72WC2612": [[1,"Speaker"],[2,"Panelist"]],
+  "72LV261": [[0,"Speaker"],[1,"Speaker"],[2,"Moderator"]]
+};
+const facFor = (c, sr) => {
+  let list = FAC_ROLES[c.code];
+  if (!list) list = (c.speakers || []).map(n => [FACULTY.findIndex(f => f.name === n), "Speaker"]).filter(x => x[0] >= 0).concat(c.speakers && c.speakers.length ? [[2, "Moderator"]] : []);
+  const by = new Map();
+  list.forEach(([i, role]) => { if (!by.has(i)) by.set(i, []); if (!by.get(i).includes(role)) by.get(i).push(role); });
+  return Array.from(by, ([i, roles]) => ({ initials: FACULTY[i].initials, name: FACULTY[i].name, color: FACULTY[i].color, affiliation: FACULTY[i].affiliation, roles }));
+};
+
+class ProjectOverview extends DCLogic {
+  state = { tab: "Overview", drawer: null, logOpen: false, expanded: {}, ses: null, sesTab: "schedule", rOpen: {}, sort: null, toast: "", dismissed: {}, tipKey: null };
+
+  componentDidUpdate() { this.lockScroll(!!this.state.ses); }
+  componentWillUnmount() { clearTimeout(this._t); this.lockScroll(false); }
+  lockScroll(on) {
+    if (this._locked === on) return; this._locked = on;
+    const els = [document.documentElement, document.body];
+    if (on) { const w = window.innerWidth - document.documentElement.clientWidth; els.forEach(e => e.style.overflow = "hidden"); document.body.style.paddingRight = w ? w + "px" : ""; }
+    else { els.forEach(e => e.style.overflow = ""); document.body.style.paddingRight = ""; }
+  }
+
+  flash(msg) {
+    clearTimeout(this._t);
+    this.setState({ toast: msg });
+    this._t = setTimeout(() => this.setState({ toast: "" }), 4000);
+  }
+  go(tab) { this.setState({ tab, drawer: null }); }
+
+  renderVals() {
+    const s = this.state;
+    const sort = s.sort || this.props.activitySort || "release";
+    const dkey = (r, i) => r.key + ":" + i[0];
+    const RD = READINESS.map(r => {
+      const dis = r.left.filter(i => s.dismissed[dkey(r, i)]);
+      const left = r.left.filter(i => !s.dismissed[dkey(r, i)]);
+      return Object.assign({}, r, { left, dis, total: r.total - dis.length });
+    });
+    const setDis = (k, v, label) => { this.setState(st => { const d = Object.assign({}, st.dismissed); if (v) d[k] = true; else delete d[k]; return { dismissed: d }; }); this.flash(v ? label + " marked not needed" : label + " restored as required"); };
+    const tiles = RD.map(r => {
+      const done = r.total - r.left.length;
+      return { name: r.name, icon: r.icon, done, total: r.total, left: r.left.length, leftLabel: r.left.length ? r.left.length + " remaining" : "Complete", leftIcon: r.left.length ? "mdi-checkbox-blank-circle-outline" : "mdi-check-circle", leftColor: r.left.length ? "var(--pa-ink-3)" : "var(--pa-success)", actionLabel: r.left.length ? "What's left" : "View", pct: Math.round(done / r.total * 100), onOpen: () => this.setState({ drawer: r.key }) };
+    });
+    const rdTotal = RD.reduce((a, r) => a + r.total, 0);
+    const rdLeft = RD.reduce((a, r) => a + r.left.length, 0);
+    const rdDone = rdTotal - rdLeft;
+    const dr = RD.find(r => r.key === s.drawer);
+
+    const FLAT = [];
+    ACTIVITIES.forEach(a => a.series ? a.children.forEach(c => FLAT.push(c)) : FLAT.push(a));
+    const dated = FLAT.filter(a => a.date).sort((a, b) => a.date - b.date);
+    const firstRel = dated[0].date, lastRel = dated[dated.length - 1].date;
+    const byDate = dated;
+    const md = d => d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const relSubOf = d => { const n = daysTo(d); return n === 0 ? "today" : n > 0 ? "in " + n + " days" : Math.abs(n) + " days ago"; };
+    const tagsOf = a => a.series ? ["Infectious Disease", "In person"] : ["Infectious Disease"].concat(a.kind === "Office hours" ? [] : ["MOC"], [a.onsite ? "In person" : a.live ? "Live Webinar" : "Online Activity"]);
+    const ART = {}; let artN = 0;
+    ACTIVITIES.forEach(a => { ART[a.code] = artN++ % 16 + 1; (a.children || []).forEach(c => { ART[c.code] = artN++ % 16 + 1; }); });
+    const place = a => ({
+      artBg: "url(art/thumb-" + String(ART[a.code] || 1).padStart(2, "0") + ".png)",
+      time: a.time || (a.date ? "Time not set" : "—"), timeColor: a.time ? "var(--pa-ink)" : "var(--pa-ink-4)",
+      venue: a.venue || "Venue not set", venueColor: a.venue ? "var(--pa-ink-2)" : "var(--pa-ink-4)",
+      venueIcon: !a.venue ? "mdi-map-marker-off-outline" : a.venue.startsWith("PRIME Zoom") ? "mdi-video-outline" : a.venue.startsWith("PRIME website") ? "mdi-web" : "mdi-map-marker-outline",
+      release: a.date ? fmt(a.date) : "Not scheduled", relMissing: !a.date, relColor: a.date ? "var(--pa-ink)" : "var(--pa-warning)", relWeight: a.date ? 400 : 500,
+      relSub: a.date ? relSubOf(a.date) : "No release date", relSubColor: "var(--pa-ink-4)",
+      pct: a.pct, pctLabel: a.pct + "%",
+      onOpen: e => { e.preventDefault(); this.flash("Opening activity " + a.code); },
+      onInfo: () => this.setState({ ses: a.code, sesTab: "schedule", rOpen: {} })
+    });
+    const firstDate = a => a.series ? (a.children.map(c => c.date).filter(Boolean).sort((x, y) => x - y)[0] || null) : a.date;
+    const pctOf = a => a.series ? Math.round(a.children.reduce((n, c) => n + c.pct, 0) / a.children.length) : a.pct;
+    const acts = ACTIVITIES.slice().sort((a, b) => { if (sort === "readiness") return pctOf(a) - pctOf(b); const x = firstDate(a), y = firstDate(b); return !x ? 1 : !y ? -1 : x - y; });
+    const rows = acts.map(a => {
+      if (!a.series) return Object.assign(place(a), { code: a.code, title: a.title, type: a.type, tags: tagsOf(a), isSeries: false, expanded: false, children: [], showChildCodes: false });
+      const n = a.children.length, ds = a.children.map(c => c.date).filter(Boolean).sort((x, y) => x - y), miss = n - ds.length;
+      const venues = Array.from(new Set(a.children.map(c => c.venue).filter(Boolean)));
+      const open = !!s.expanded[a.code];
+      return Object.assign(place({ code: a.code, date: ds[0], pct: pctOf(a), time: n + " sessions", venue: venues.length > 1 ? venues.length + " venues" : venues[0] }), {
+        code: a.code, title: a.title, type: a.type, tags: tagsOf(a), isSeries: true, childCount: n + " sessions",
+        venueIcon: "mdi-map-marker-multiple-outline",
+        release: ds.length ? md(ds[0]) + (ds.length > 1 ? " – " + fmt(ds[ds.length - 1]) : ", " + ds[0].getFullYear()) : "Not scheduled",
+        relSub: miss ? miss + " of " + n + " not scheduled" : "All sessions scheduled", relSubColor: miss ? "var(--pa-warning)" : "var(--pa-ink-4)",
+        expanded: open, chev: open ? "mdi-chevron-up" : "mdi-chevron-down", toggleTitle: open ? "Hide sessions" : "Show sessions",
+        onToggle: () => this.setState(st => ({ expanded: Object.assign({}, st.expanded, { [a.code]: !st.expanded[a.code] }) })),
+                showChildCodes: !open, childCodes: a.children.map(c => c.code).join(", "),
+        children: a.children.map((c, i) => Object.assign(place(c), { code: c.code, part: "Session " + (i + 1) + " of " + n, title: c.title || "Uses series title", titleColor: c.title ? "var(--pa-ink)" : "var(--pa-ink-3)" }))
+      });
+    });
+
+    return {
+      showRail: this.props.showRail ?? true,
+      showReadiness: this.props.showReadiness ?? true,
+      tabs: TABS.map(t => ({ label: t.toUpperCase(), cls: "pa-tabs__btn" + (t === s.tab ? " pa-tabs__btn--active" : ""), onSelect: () => this.go(t) })),
+      isOverview: s.tab === "Overview",
+      isOther: s.tab !== "Overview",
+      activeTabLabel: "Project " + s.tab,
+      goOverview: () => this.go("Overview"),
+      goDetails: () => this.go("Details"),
+      goPlanning: () => this.go("Planning"),
+      goFaculty: () => this.go("Faculty"),
+      goActivities: () => this.go("Activities"),
+      presence: [
+        { initials: "MW", name: "Maya Whitfield · Details", color: "var(--pa-primary)" },
+        { initials: "PR", name: "Priya Raman · Overview", color: "#4FA3E8" },
+        { initials: "KB", name: "Kevin Boateng · Activities", color: "var(--pa-ink-2)" }
+      ],
+      ...(() => { const n = byDate.find(a => a.date >= TODAY); if (!n) return { nextCode: "—", nextDate: "", nextDays: "" }; const d = daysTo(n.date); return { nextCode: n.code, nextDate: n.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }), nextDays: d === 0 ? "today" : "in " + d + " days" }; })(),
+      rdTiles: tiles, rdDone, rdTotal, rdLeft,
+      rdPct: Math.round(rdDone / rdTotal * 100),
+      rdPctLabel: Math.round(rdDone / rdTotal * 100) + "%",
+      drawerOpen: !!dr,
+      drawerTitle: dr ? dr.name.toUpperCase() : "",
+      drawerSub: dr ? dr.done.length + " of " + dr.total + " required items complete" : "",
+      drawerHasLeft: !!(dr && dr.left.length), drawerLeftHead: dr ? "Pending · " + dr.left.length : "", drawerDoneHead: dr ? "Complete · " + dr.done.length : "",
+      drawerDone: dr ? dr.done.map(([label, note]) => ({ label, note, tab: dr.tab, onGo: () => this.go(dr.tab) })) : [],
+      drawerItems: dr ? dr.left.map(i => ({ label: i[0], note: i[1], tab: dr.tab, onGo: () => this.go(dr.tab), onDismiss: () => { this.setState({ tipKey: null }); setDis(dkey(dr, i), true, i[0]); }, tip: s.tipKey === dkey(dr, i), onTipIn: () => this.setState({ tipKey: dkey(dr, i) }), onTipOut: () => this.setState({ tipKey: null }) })) : [],
+      drawerHasDismissed: !!(dr && dr.dis.length), drawerDismissedHead: dr ? "Not needed · " + dr.dis.length : "",
+      drawerDismissed: dr ? dr.dis.map(i => ({ label: i[0], by: "Marked not needed · you, just now", onRestore: () => setDis(dkey(dr, i), false, i[0]) })) : [],
+      onCloseDrawer: () => this.setState({ drawer: null }),
+      rows,
+      ...(() => {
+        let sr = null, list = [];
+        ACTIVITIES.forEach(a => { if (a.code === s.ses) { sr = a; list = a.series ? a.children.map((c, i) => [c, i]) : [[a, -1]]; } else if (a.series) a.children.forEach((c, i) => { if (c.code === s.ses) { sr = a; list = [[c, i]]; } }); });
+        if (!sr) return { sesOpen: false, sessions: [] };
+        const n = sr.series ? sr.children.length : 0, single = list.length === 1;
+        const top = single ? list[0][0] : sr;
+        const rUnits = list.map(([c]) => ({ c, m: readinessOf(c.code, c.pct ?? 0) }));
+        const rel = (single ? top.date : sr.children.map(c => c.date).filter(Boolean).sort((x, y) => x - y)[0]) || null;
+        const dd = rel ? Math.round((rel - TODAY) / 86400000) : null;
+        const cats = RCATS.map((cat, ci) => {
+          let d = 0, t = 0; const left = [];
+          rUnits.forEach(u => u.m[ci].forEach((ok, ii) => { t++; if (ok) d++; else left.push({ label: cat[2][ii], where: single ? "" : u.c.code, hasWhere: !single }); }));
+          const open = !!s.rOpen[ci];
+          return { label: cat[0], icon: cat[1], frac: d + "/" + t, pctLabel: Math.round(d / t * 100) + "%", leftLabel: left.length ? left.length + " remaining" : "Complete",
+            stateIcon: left.length ? "mdi-checkbox-blank-circle-outline" : "mdi-check-circle", stateColor: left.length ? "var(--pa-ink-4)" : "var(--pa-success)",
+            hasLeft: left.length > 0, open, items: left, toggleLabel: open ? "Hide" : "What's left", toggleIcon: open ? "mdi-chevron-up" : "mdi-arrow-right",
+            onToggle: () => this.setState(p => ({ rOpen: { ...p.rOpen, [ci]: !p.rOpen[ci] } })) };
+        });
+        const rDone = cats.reduce((n, k) => n + +k.frac.split("/")[0], 0), rTot = RTOTAL * rUnits.length;
+        const rd = { pctLabel: Math.round(rDone / rTot * 100) + "%", doneLabel: rDone + " of " + rTot + " items complete", done: rDone, left: rTot - rDone,
+          relLabel: rel ? (single ? "Release " : "First release ") + fmt(rel) + " ·" : "Release date not set", relColor: rel ? "var(--pa-ink-2)" : "var(--pa-warning)",
+          daysLabel: dd == null ? "" : dd > 0 ? dd + " days" : dd === 0 ? "today" : Math.abs(dd) + " days ago",
+          isSeries: !single, cats,
+          sessions: single ? [] : sr.children.map((c, i) => ({ code: c.code, title: c.title || "Session " + (i + 1) + " · details not set", titleColor: c.title ? "var(--pa-ink-2)" : "var(--pa-ink-4)",
+            pctLabel: Math.round(readinessOf(c.code, c.pct).flat().filter(Boolean).length / RTOTAL * 100) + "%", onPick: () => this.setState({ ses: c.code, rOpen: {} }) })) };
+        return { sesOpen: true, rd, sesIsSchedule: s.sesTab === "schedule", sesIsReadiness: s.sesTab === "readiness",
+          sesTabs: [["schedule", "Details"], ["readiness", "Readiness"]].map(([k, l]) => ({ label: l.toUpperCase(), cls: "pa-tabs__btn" + (k === s.sesTab ? " pa-tabs__btn--active" : ""), onSelect: () => this.setState({ sesTab: k }) })),
+          sesHead: (single ? "Activity" : "Series") + " · " + top.code, sesTitle: top.title || sr.title,
+          sesSub: single ? (list[0][1] >= 0 ? "Session " + (list[0][1] + 1) + " of " + n + " · " + sr.code : "") : n + " sessions",
+          onCloseSes: () => this.setState({ ses: null }),
+          sessions: list.map(([c, i]) => {
+            const addDays = (d, n) => new Date(d.getTime() + n * 86400000);
+            const virt = !sr.series && !sr.onsite;
+            return { code: c.code, part: i >= 0 ? "Session " + (i + 1) + " of " + n : "",
+              onOpen: e => { e.preventDefault(); this.flash("Opening activity " + c.code); },
+              title: c.title || sr.title, titleColor: c.title ? "var(--pa-ink)" : "var(--pa-ink-3)",
+              when: c.date ? c.date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" }) + (c.time && c.time !== "On demand" ? " at " + c.time : c.time === "On demand" ? " · on demand" : "") : "Not scheduled",
+              whenColor: c.date ? "var(--pa-ink)" : "var(--pa-warning)", relMissing: !c.date,
+              whenLabel: virt && !c.live ? "Release date" : "Event date & time",
+              location: c.location || "Not set", locColor: c.location ? "var(--pa-ink)" : "var(--pa-ink-4)",
+              venueName: c.venueName || "Venue not set", venueColor: c.venueName ? "var(--pa-ink)" : "var(--pa-ink-4)",
+              address: c.address || "—", addrColor: c.address ? "var(--pa-ink)" : "var(--pa-ink-4)",
+              room: c.room || "—", roomColor: c.room ? "var(--pa-ink)" : "var(--pa-ink-4)",
+              reg: c.date ? fmt(addDays(c.date, virt && !c.live ? 0 : -42)) : "Not set", regColor: c.date ? "var(--pa-ink)" : "var(--pa-ink-4)",
+              exp: c.date ? fmt(addDays(c.date, 364)) : "Not set", expColor: c.date ? "var(--pa-ink)" : "var(--pa-ink-4)",
+              isVirtual: virt, isVenue: !virt,
+              platform: c.live ? "PRIME Zoom" + (c.time ? " · " + c.time : "") : "PRIME website · on demand",
+              hasJoin: virt && c.live, joinUrl: "https://ehgroup.zoom.us/j/9334559" + c.code.replace(/\D/g, "").slice(-4) + "?pwd=h0xrrFYF9lWrzBSAGvLm0PjMxKzrqi.1",
+              shortlink: "https://livecme.org/" + c.code.replace(/^72/, ""), onLink: e => { e.preventDefault(); this.flash("Opens in a new tab"); },
+              fac: facFor(c, sr), hasFac: facFor(c, sr).length > 0, noFac: facFor(c, sr).length === 0 };
+          }) };
+      })(),
+      sortOpts: [["release","Release date"],["readiness","Least ready"]].map(([k, l]) => ({ label: l, cls: "pa-chip" + (k === sort ? " pa-chip--selected" : ""), onPick: () => this.setState({ sort: k }) })),
+      dates: [
+        { label: "Launch Date", value: "Jan 23, 2026", weight: 600 },
+        { label: "First Release", value: fmt(firstRel), weight: 400 },
+        { label: "Final Release", value: fmt(lastRel), weight: 400 },
+        { label: "Last Expiration", value: "Sep 24, 2027", weight: 400 }
+      ],
+      faculty: FACULTY.map(f => Object.assign({}, f, { docsPct: f.docs * 10 })),
+      leads: LEADS.map(([role, name], i) => ({
+        role, name: name || "Unassigned", nameColor: name ? "var(--pa-ink)" : "var(--pa-ink-4)",
+        initials: name ? name.split(" ").map(w => w[0]).join("").slice(0, 2) : "",
+        avBg: name ? "var(--pa-primary-050)" : "#fff", avBorder: name ? "none" : "1px dashed var(--pa-ink-6)"
+      })),
+      competencies: COMPETENCIES,
+      feed: FEED,
+      onLog: () => this.setState({ logOpen: true }),
+      logOpen: s.logOpen, onCloseLog: () => this.setState({ logOpen: false }), history: HISTORY,
+      onSurvey: e => { e.preventDefault(); this.flash("Opening project survey in a new tab"); },
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+
+// ===== Templates =====
+const renderApp = (v) => `
+
+<div style="display:flex;min-height:100vh;background:#fff">
+  <nav class="sb" style="min-height:100vh">
+    <div class="sb__head">
+      <div style="font-family:var(--pa-font-sans);font-weight:500;font-size:20px;letter-spacing:1px;color:#fff">PRIME <span style="color:var(--pa-aqua-500)">ADMIN</span></div>
+      <i class="mdi mdi-chevron-left sb__collapse"></i>
+    </div>
+    <div class="sb__section">
+      <div class="sb__item sb__item--active"><i class="mdi mdi-account-box-outline"></i><span>Program Management</span><i class="mdi sb__item__chev mdi-chevron-up"></i></div>
+      <div class="sb__sub">
+        <div class="sb__sub-item sb__sub-item--active">Projects</div>
+        <div class="sb__sub-item">Activities</div>
+      </div>
+    </div>
+    <div class="sb__section"><div class="sb__item"><i class="mdi mdi-chart-line"></i><span>Marketing</span><i class="mdi sb__item__chev mdi-chevron-down"></i></div></div>
+    <div class="sb__section"><div class="sb__item"><i class="mdi mdi-poll"></i><span>Outcomes</span><i class="mdi sb__item__chev mdi-chevron-down"></i></div></div>
+    <div class="sb__section"><div class="sb__item"><i class="mdi mdi-chart-box-outline"></i><span>Reporting</span><i class="mdi sb__item__chev mdi-chevron-down"></i></div></div>
+    <div class="sb__section"><div class="sb__item"><i class="mdi mdi-tools"></i><span>Tools</span><i class="mdi sb__item__chev mdi-chevron-down"></i></div></div>
+    <div class="sb__section"><div class="sb__item"><i class="mdi mdi-account-multiple-outline"></i><span>User Manager</span><i class="mdi sb__item__chev mdi-chevron-down"></i></div></div>
+  </nav>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <header class="topbar">
+      <div class="search" style="flex:1;max-width:660px;height:40px;border-radius:4px">
+        <input placeholder="Search for [Project]" data-fk="1">
+        <i class="mdi mdi-magnify" style="color:var(--pa-ink-6);font-size:18px"></i>
+      </div>
+      <button class="pa-btn pa-btn--primary"><i class="mdi mdi-plus"></i><span>CREATE</span></button>
+      <div style="flex:1"></div>
+      <button class="topbar__btn" title="Notifications"><i class="mdi mdi-bell-outline" style="font-size:22px;color:var(--pa-ink-3)"></i></button>
+      <div class="avatar" title="Douglas Benjamin">DB</div>
+    </header>
+
+    <div style="padding:16px 32px 12px;background:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <div style="min-width:0">
+          <h1 class="pa-page-title" style="margin:0;font-weight:400">PROJECTS</h1>
+          <div style="display:flex;flex-wrap:wrap;gap:6px 30px;margin-top:12px;font-family:var(--pa-font-sans);font-size:13px">
+            <span><span style="color:var(--pa-ink-3);text-transform:uppercase;letter-spacing:0.04em;font-size:12px">Supporters</span> <span style="color:var(--pa-ink);font-weight:500">Merck · Gilead</span></span>
+            <span><span style="color:var(--pa-ink-3);text-transform:uppercase;letter-spacing:0.04em;font-size:12px">Launch Date</span> <span style="color:var(--pa-ink);font-weight:500">January 23, 2026</span></span>
+            <span><span style="color:var(--pa-ink-3);text-transform:uppercase;letter-spacing:0.04em;font-size:12px">Activities</span> <span style="color:var(--pa-ink);font-weight:500">13</span></span>
+            <span><span style="color:var(--pa-ink-3);text-transform:uppercase;letter-spacing:0.04em;font-size:12px">Status</span> <span style="color:var(--pa-success);font-weight:500">Active</span></span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;padding:4px 8px 4px 4px">
+          <span style="display:flex;align-items:center">
+            ${(v.presence || []).map((p, $index) => `
+              <span title="${A(p?.name)}" style="width:28px;height:28px;margin-left:-7px;border-radius:50%;border:2px solid #fff;background:${A(p?.color)};color:#fff;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;box-shadow:var(--pa-elev-1)">${T(p?.initials)}</span>
+            `).join("")}
+          </span>
+          <span style="font-family:var(--pa-font-sans);font-size:12px;color:var(--pa-ink-3);white-space:nowrap">3 people here</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pa-tabs">
+      ${(v.tabs || []).map((t, $index) => `
+        <button class="${A(t?.cls)}" data-ev-click="${H(t?.onSelect)}">${T(t?.label)}</button>
+      `).join("")}
+    </div>
+
+    <div style="flex:1;background:#fff;padding:24px 32px 40px">
+      ${v.isOther ? `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 24px;text-align:center">
+          <i class="mdi mdi-hammer-wrench" style="font-size:56px;color:var(--pa-ink-7)"></i>
+          <div style="font-family:var(--pa-font-sans);font-size:20px;color:var(--pa-ink);margin-top:16px">${T(v.activeTabLabel)}</div>
+          <div style="font-family:var(--pa-font-sans);font-size:14px;color:var(--pa-ink-3);margin-top:8px;max-width:440px;line-height:20px">This tab lives in the Project Details prototype. Return to Overview to keep exploring.</div>
+          <div style="margin-top:20px"><button class="pa-btn pa-btn--secondary" data-ev-click="${H(v.goOverview)}"><span>BACK TO OVERVIEW</span></button></div>
+        </div>
+      ` : ""}
+
+      ${v.isOverview ? `
+        <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;width:100%">
+
+          <div style="flex:999 1 620px;min-width:0;display:flex;flex-direction:column;gap:20px">
+            <div>
+              <h2 class="pa-screen-title" style="margin:0 0 10px">PROJECT OVERVIEW (72261)</h2>
+              <div style="font-family:var(--pa-font-display);font-weight:600;font-size:20px;line-height:28px;color:var(--pa-ink);max-width:820px;text-wrap:pretty">The Science of Scarcity: Translating Innovation to HIV Practice in an Era of Less: 12th Annual Hot Topics in HIV Series</div>
+            </div>
+
+            <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-card)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#f0f0f0;padding:12px 24px">
+                <span style="display:flex;align-items:center;gap:9px;font-family:var(--pa-font-sans);font-size:16px;color:var(--pa-ink);letter-spacing:0.3px"><i class="mdi mdi-account-tie-outline" style="font-size:19px;color:var(--pa-primary)"></i>PROJECT LEADS</span>
+                <button class="hv1" data-ev-click="${H(v.goDetails)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">Details<i class="mdi mdi-chevron-right" style="font-size:15px"></i></button>
+              </div>
+              <div style="padding:18px 24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 24px">
+                ${(v.leads || []).map((l, $index) => `
+                  <div style="display:flex;align-items:center;gap:11px;min-width:0">
+                    <span style="width:34px;height:34px;border-radius:50%;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-family:var(--pa-font-display);font-weight:600;font-size:12px;background:${A(l?.avBg)};color:var(--pa-primary);border:${A(l?.avBorder)}">${T(l?.initials)}</span>
+                    <div style="min-width:0">
+                      <div style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">${T(l?.role)}</div>
+                      <div style="font-family:var(--pa-font-display);font-size:13.5px;color:${A(l?.nameColor)}">${T(l?.name)}</div>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+
+            ${v.showReadiness ? `
+              <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-card)">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#f0f0f0;padding:12px 24px">
+                  <span style="display:flex;align-items:center;gap:9px;font-family:var(--pa-font-sans);font-size:16px;color:var(--pa-ink);letter-spacing:0.3px"><i class="mdi mdi-view-grid-outline" style="font-size:19px;color:var(--pa-primary)"></i>PROJECT READINESS</span>
+                  <span style="font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-3)">${T(v.rdDone)} of ${T(v.rdTotal)} complete · ${T(v.rdLeft)} remaining</span>
+                </div>
+                <div style="padding:20px 24px 18px;border-bottom:1px solid #EEEEEE">
+                  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+                    <span style="display:flex;align-items:baseline;gap:11px">
+                      <span style="font-family:var(--pa-font-display);font-weight:600;font-size:38px;line-height:1;color:var(--pa-ink)">${T(v.rdPctLabel)}</span>
+                      <span style="font-family:var(--pa-font-display);font-size:13px;color:var(--pa-ink-3)">ready · ${T(v.rdDone)} of ${T(v.rdTotal)} items complete</span>
+                    </span>
+                    <span style="font-family:var(--pa-font-display);font-size:13px;color:var(--pa-ink-3)">Next release ${T(v.nextCode)} · ${T(v.nextDate)} · <span style="color:var(--pa-ink);font-weight:600">${T(v.nextDays)}</span></span>
+                  </div>
+                  <div style="height:12px;border-radius:6px;background:#E0E0E0;margin-top:15px;overflow:hidden">
+                    <div style="height:100%;width:${A(v.rdPct)}%;background:var(--pa-success)"></div>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3)">
+                    <span style="display:inline-flex;align-items:center;gap:7px"><span style="width:9px;height:9px;border-radius:2px;background:var(--pa-success)"></span>Complete <span style="color:var(--pa-ink);font-weight:600">${T(v.rdDone)}</span></span>
+                    <span style="display:inline-flex;align-items:center;gap:7px"><span style="width:9px;height:9px;border-radius:2px;background:#E0E0E0"></span>Remaining <span style="color:var(--pa-ink);font-weight:600">${T(v.rdLeft)}</span></span>
+                  </div>
+                </div>
+                <div style="padding:18px 24px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px 18px">
+                  ${(v.rdTiles || []).map((t, $index) => `
+                    <div style="min-width:0;border:1px solid var(--pa-divider);border-radius:var(--pa-radius-sm);background:#fff;display:flex;flex-direction:column;gap:11px;padding:14px 15px 12px">
+                      <div style="display:flex;align-items:center;gap:9px">
+                        <i class="mdi mdi-${A(t?.icon)}" style="font-size:19px;color:var(--pa-ink-3)"></i>
+                        <span style="flex:1;min-width:0;font-family:var(--pa-font-sans);font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--pa-ink)">${T(t?.name)}</span>
+                        <span style="font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-4)"><span style="color:var(--pa-ink);font-weight:600">${T(t?.done)}</span>/${T(t?.total)}</span>
+                      </div>
+                      <div style="height:8px;border-radius:4px;background:#E0E0E0;overflow:hidden">
+                        <div style="height:100%;width:${A(t?.pct)}%;background:var(--pa-success)"></div>
+                      </div>
+                      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--pa-font-display);font-size:12px;color:${A(t?.leftColor)}"><i class="mdi ${A(t?.leftIcon)}" style="font-size:15px"></i>${T(t?.leftLabel)}</span>
+                        <button class="hv2" data-ev-click="${H(t?.onOpen)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">${T(t?.actionLabel)}<i class="mdi mdi-arrow-right" style="font-size:15px"></i></button>
+                      </div>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            ` : ""}
+
+            <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-card)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#f0f0f0;padding:12px 24px">
+                <span style="display:flex;align-items:center;gap:9px;font-family:var(--pa-font-sans);font-size:16px;color:var(--pa-ink);letter-spacing:0.3px"><i class="mdi mdi-layers-outline" style="font-size:19px;color:var(--pa-primary)"></i>ACTIVITIES</span>
+                <span style="display:flex;align-items:center;gap:18px">
+                  <button class="hv3" data-ev-click="${H(v.goActivities)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">Activities<i class="mdi mdi-chevron-right" style="font-size:15px"></i></button>
+                </span>
+              </div>
+              <div style="overflow-x:auto">
+                <div style="min-width:940px;padding:0 24px 8px">
+                  <div style="display:grid;grid-template-columns:104px 96px minmax(0,1fr) 150px 200px 72px;gap:0 16px;padding:12px 0;border-bottom:1px solid #EEEEEE;font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">
+                    <div>Code</div><div>Artwork</div><div>Activity</div><div>Release</div><div>Tags</div><div></div>
+                  </div>
+                  ${(v.rows || []).map((r, $index) => `
+                    <div style="border-bottom:1px solid #EEEEEE">
+                      <div style="display:grid;grid-template-columns:104px 96px minmax(0,1fr) 150px 200px 72px;gap:0 16px;padding:14px 0;align-items:start">
+                        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px">
+                          <a href="#" data-ev-click="${H(r?.onOpen)}" style="font-family:var(--pa-font-display);font-weight:600;font-size:13.5px">${T(r?.code)}</a>
+                          ${r?.isSeries ? `<span style="display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:16px;background:var(--pa-primary-050);font-family:var(--pa-font-display);font-size:11px;font-weight:500;color:var(--pa-primary-700);white-space:nowrap"><i class="mdi mdi-file-tree-outline" style="font-size:13px"></i>Series</span>` : ""}
+                        </div>
+                        <div style="width:96px;aspect-ratio:3/2;border-radius:2px;overflow:hidden;background:#F0F0F0"><div role="img" aria-label="Activity artwork" style="width:100%;height:100%;background-size:cover;background-position:center;background-image:${A(r?.artBg)}"></div></div>
+                        <div style="min-width:0">
+                          <div style="font-family:var(--pa-font-display);font-size:13.5px;line-height:19px;color:var(--pa-ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:pretty">${T(r?.title)}</div>
+                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:4px">
+                            <span style="font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3)">${T(r?.type)}</span>
+                          </div>
+                          ${r?.showChildCodes ? `<div style="font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3);margin-top:4px">${T(r?.childCodes)}</div>` : ""}
+                        </div>
+                        <div style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(r?.relColor)}"><div style="display:flex;align-items:center;gap:4px;font-weight:${A(r?.relWeight)}">${r?.relMissing ? `<i class="mdi mdi-calendar-alert" style="font-size:15px"></i>` : ""}${T(r?.release)}</div></div>
+                        
+                        <div style="display:flex;flex-wrap:wrap;gap:4px">${(r?.tags || []).map((t, $index) => `<span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:16px;background:#F0F0F0;font-family:var(--pa-font-display);font-size:11px;font-weight:500;color:var(--pa-ink-2);white-space:nowrap">${T(t)}</span>`).join("")}</div>
+                        <div style="display:flex;align-items:center;justify-content:flex-end;gap:2px">
+                          <button class="pa-icon-btn pa-icon-btn--sm" title="Activity details" data-ev-click="${H(r?.onInfo)}"><i class="mdi mdi-information-outline"></i></button>
+                          ${r?.isSeries ? `<button class="pa-icon-btn pa-icon-btn--sm" title="${A(r?.toggleTitle)}" data-ev-click="${H(r?.onToggle)}"><i class="mdi ${A(r?.chev)}"></i></button>` : ""}
+                        </div>
+                      </div>
+                      ${r?.expanded ? `
+                        <div style="background:#FAFAFA;margin:0 -24px;padding:0 24px">
+                          ${(r?.children || []).map((c, $index) => `
+                            <div style="display:grid;grid-template-columns:104px 96px minmax(0,1fr) 150px 200px 72px;gap:0 16px;padding:10px 0;border-top:1px solid #EEEEEE;align-items:start">
+                              <div style="display:flex;flex-direction:column;gap:3px;padding-left:12px;border-left:2px solid var(--pa-primary-12a)"><a href="#" data-ev-click="${H(c?.onOpen)}" style="font-family:var(--pa-font-display);font-weight:600;font-size:13px">${T(c?.code)}</a><span style="font-family:var(--pa-font-display);font-size:11.5px;color:var(--pa-ink-3)">${T(c?.part)}</span></div>
+                              <div style="width:96px;aspect-ratio:3/2;border-radius:2px;overflow:hidden;background:#F0F0F0"><div role="img" aria-label="Activity artwork" style="width:100%;height:100%;background-size:cover;background-position:center;background-image:${A(c?.artBg)}"></div></div>
+                              <div style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(c?.titleColor)};min-width:0;text-wrap:pretty">${T(c?.title)}</div>
+                              <div style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(c?.relColor)}"><div style="display:flex;align-items:center;gap:4px;font-weight:${A(c?.relWeight)}">${c?.relMissing ? `<i class="mdi mdi-calendar-alert" style="font-size:15px"></i>` : ""}${T(c?.release)}</div></div>
+                              
+                              <div></div>
+                              <div style="display:flex;justify-content:flex-end;padding-right:36px"><button class="pa-icon-btn pa-icon-btn--sm" title="Activity details" data-ev-click="${H(c?.onInfo)}"><i class="mdi mdi-information-outline"></i></button></div>
+                            </div>
+                          `).join("")}
+                        </div>
+                      ` : ""}
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </div>
+
+            <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-card)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#f0f0f0;padding:12px 24px">
+                <span style="display:flex;align-items:center;gap:9px;font-family:var(--pa-font-sans);font-size:16px;color:var(--pa-ink);letter-spacing:0.3px"><i class="mdi mdi-account-group-outline" style="font-size:19px;color:var(--pa-primary)"></i>FACULTY &amp; DOCUMENTS</span>
+                <button class="hv4" data-ev-click="${H(v.goFaculty)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">Faculty<i class="mdi mdi-chevron-right" style="font-size:15px"></i></button>
+              </div>
+              <div style="padding:6px 24px 16px">
+                ${(v.faculty || []).map((f, $index) => `
+                  <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #EEEEEE;align-items:flex-start">
+                    <span style="width:34px;height:34px;border-radius:50%;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-family:var(--pa-font-display);font-weight:600;font-size:12px;background:${A(f?.color)};color:#fff">${T(f?.initials)}</span>
+                    <div style="flex:1;min-width:0">
+                      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                        <span style="font-family:var(--pa-font-display);font-size:14px;font-weight:600;color:var(--pa-ink)">${T(f?.name)}</span>
+                        <span style="display:flex;gap:6px;flex-wrap:wrap">
+                          ${(f?.roles || []).map((r, $index) => `
+                            <span style="display:inline-flex;align-items:center;height:21px;padding:0 9px;border-radius:var(--pa-radius-pill);font-family:var(--pa-font-display);font-weight:700;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;background:var(--pa-primary-12a);color:var(--pa-primary)">${T(r)}</span>
+                          `).join("")}
+                        </span>
+                      </div>
+                      <div style="font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-3);margin-top:3px">${T(f?.affiliation)}</div>
+                      <div style="font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3);margin-top:6px">In ${T(f?.inActivities)}</div>
+                    </div>
+                    <div style="width:180px;flex-shrink:0;display:flex;flex-direction:column;gap:7px">
+                      <div style="display:flex;justify-content:space-between;font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3)"><span>Documents</span><span><span style="color:var(--pa-ink);font-weight:600">${T(f?.docs)}</span>/10</span></div>
+                      <div style="height:6px;border-radius:3px;background:#E0E0E0;overflow:hidden"><div style="height:100%;width:${A(f?.docsPct)}%;background:var(--pa-success)"></div></div>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+
+          </div>
+
+          ${v.showRail ? `
+            <div style="flex:1 1 300px;min-width:0;max-width:100%;display:flex;flex-direction:column;gap:20px">
+              <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-1)">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f0f0f0;padding:11px 16px">
+                  <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:15px;color:var(--pa-ink)"><i class="mdi mdi-clipboard-text-outline" style="font-size:18px;color:var(--pa-primary)"></i>PLANNING</span>
+                  <button class="hv5" data-ev-click="${H(v.goPlanning)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">Planning<i class="mdi mdi-chevron-right" style="font-size:15px"></i></button>
+                </div>
+                <div style="padding:16px 16px 18px;display:flex;flex-direction:column;gap:16px">
+                  <div>
+                    <div style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Intended Audience</div>
+                    <div style="font-family:var(--pa-font-display);font-size:13.5px;line-height:20px;color:var(--pa-ink);margin-top:4px;text-wrap:pretty">HIV clinicians, including physicians, NPs, PAs, pharmacists, and care teams working in HIV treatment and prevention</div>
+                  </div>
+                  <div>
+                    <div>
+                      <div style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Designed To</div>
+                      <div style="font-family:var(--pa-font-display);font-size:13.5px;color:var(--pa-ink);margin-top:4px">Change Competence · Measure Competence</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3);margin-bottom:8px">Competencies Addressed · 8</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:4px">
+                      ${(v.competencies || []).map((c, $index) => `
+                        <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:16px;background:#F0F0F0;font-family:var(--pa-font-display);font-size:11px;font-weight:500;color:var(--pa-ink-2);white-space:nowrap">${T(c)}</span>
+                      `).join("")}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-1)">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f0f0f0;padding:11px 16px">
+                  <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:15px;color:var(--pa-ink)"><i class="mdi mdi-handshake-outline" style="font-size:18px;color:var(--pa-primary)"></i>SUPPORTERS</span>
+                  <button class="hv6" data-ev-click="${H(v.goDetails)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">Details<i class="mdi mdi-chevron-right" style="font-size:15px"></i></button>
+                </div>
+                <div style="padding:16px 20px 18px;display:flex;flex-direction:column;gap:12px">
+                  <div>
+                    <div style="font-family:var(--pa-font-display);font-size:14px;font-weight:600;color:var(--pa-ink)">Merck Sharp &amp; Dohme LLC</div>
+                    <div style="font-family:var(--pa-font-display);font-size:12.5px;line-height:18px;color:var(--pa-ink-3);margin-top:2px">Co-supported by Gilead Sciences, Inc.</div>
+                  </div>
+                  <div style="border-top:1px solid #EEEEEE;padding-top:12px">
+                    <div style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3);margin-bottom:4px">Grant ID</div>
+                    <div style="font-family:var(--pa-font-display);font-size:13.5px;color:var(--pa-ink)">CME-25-202696</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="pa-card" style="padding:0;overflow:hidden;box-shadow:var(--pa-elev-1)">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f0f0f0;padding:11px 16px">
+                  <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:15px;color:var(--pa-ink)"><i class="mdi mdi-history" style="font-size:18px;color:var(--pa-primary)"></i>RECENT ACTIVITY</span>
+            <button class="hv7" data-ev-click="${H(v.onLog)}" style="border:none;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:2px;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding:4px 2px">View full log<i class="mdi mdi-chevron-right" style="font-size:15px"></i></button>
+          </div>
+          <div>
+            ${(v.feed || []).map((fi, $index) => `
+              <button class="hv8" data-ev-click="${H(v.onLog)}" style="display:flex;gap:11px;width:100%;text-align:left;border:none;border-bottom:1px solid #EEEEEE;background:transparent;padding:12px 16px;cursor:pointer">
+                <span style="width:30px;height:30px;border-radius:50%;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-family:var(--pa-font-display);font-weight:600;font-size:11px;background:var(--pa-primary-050);color:var(--pa-primary)">${T(fi?.initials)}</span>
+                <span style="flex:1;min-width:0">
+                  <span style="display:flex;align-items:center;gap:7px;font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink)"><strong style="font-weight:600">${T(fi?.user)}</strong><span style="display:inline-flex;align-items:center;height:17px;padding:0 7px;border-radius:var(--pa-radius-pill);background:var(--pa-primary-12a);color:var(--pa-primary);font-family:var(--pa-font-sans);font-weight:600;font-size:10px">${T(fi?.where)}</span></span>
+                  <span style="display:block;font-family:var(--pa-font-display);font-size:11px;color:var(--pa-ink-3);margin-top:2px">${T(fi?.stamp)}</span>
+                  <span style="display:block;font-family:var(--pa-font-display);font-size:11.5px;line-height:16px;color:var(--pa-ink-4);margin-top:5px;text-wrap:pretty">${T(fi?.fields)}</span>
+                </span>
+              </button>
+            `).join("")}
+                </div>
+              </div>
+            </div>
+          ` : ""}
+        </div>
+      ` : ""}
+    </div>
+
+    <div style="padding:22px 32px;border-top:1px solid #EEEEEE;text-align:center;font-family:var(--pa-font-sans);font-size:12.5px;font-weight:500;color:var(--pa-ink)">1997-2026 PRIME Education, LLC</div>
+  </div>
+</div>
+
+${v.sesOpen ? `
+  <div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px">
+    <div data-ev-click="${H(v.onCloseSes)}" style="position:absolute;inset:0;background:rgba(0,0,0,0.5)"></div>
+    <div style="position:relative;width:720px;max-width:100%;height:min(680px, calc(100vh - 48px));background:#fff;border-radius:8px;box-shadow:var(--pa-elev-modal);display:flex;flex-direction:column;overflow:hidden">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:22px 24px 16px;border-bottom:1px solid #EEEEEE">
+        <span style="min-width:0">
+          <span class="pa-modal-title" style="display:block">${T(v.sesHead)}</span>
+          <span style="display:block;font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:var(--pa-ink-2);margin-top:4px;text-wrap:pretty">${T(v.sesTitle)}</span>
+          <span style="display:block;font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-3);margin-top:3px">${T(v.sesSub)}</span>
+        </span>
+        <button data-ev-click="${H(v.onCloseSes)}" title="Close" style="border:none;background:transparent;cursor:pointer;color:var(--pa-ink-3);display:flex;padding:2px"><i class="mdi mdi-close" style="font-size:20px"></i></button>
+      </div>
+      <div class="pa-tabs" style="flex-shrink:0">
+        ${(v.sesTabs || []).map((t, $index) => `
+          <button class="${A(t?.cls)}" data-ev-click="${H(t?.onSelect)}">${T(t?.label)}</button>
+        `).join("")}
+      </div>
+      ${v.sesIsSchedule ? `
+      <div style="flex:1;overflow:auto;padding:8px 24px 24px" data-sk="1">
+        ${(v.sessions || []).map((x, $index) => `
+          <div style="padding:18px 0;border-bottom:1px solid #EEEEEE;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <span style="display:flex;align-items:baseline;gap:10px;min-width:0">
+                <a href="#" data-ev-click="${H(x?.onOpen)}" style="font-family:var(--pa-font-display);font-weight:600;font-size:14px">${T(x?.code)}</a>
+                <span style="font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3)">${T(x?.part)}</span>
+              </span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:13px;letter-spacing:.3px;color:var(--pa-ink);text-transform:uppercase"><i class="mdi mdi-calendar-outline" style="font-size:17px;color:var(--pa-primary)"></i>Dates</span>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 24px">
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Registration opens</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.regColor)}">${T(x?.reg)}</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">${T(x?.whenLabel)}</span><span style="display:flex;align-items:center;gap:4px;font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.whenColor)}">${x?.relMissing ? `<i class="mdi mdi-calendar-alert" style="font-size:15px"></i>` : ""}${T(x?.when)}</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Expiration</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.expColor)}">${T(x?.exp)}</span></div>
+              </div>
+            </div>
+            ${x?.isVirtual ? `
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid #EEEEEE">
+              <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:13px;letter-spacing:.3px;color:var(--pa-ink);text-transform:uppercase"><i class="mdi mdi-video-outline" style="font-size:17px;color:var(--pa-primary)"></i>Virtual platform</span>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 24px">
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Platform</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:var(--pa-ink)">${T(x?.platform)}</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Program shortlink</span><a href="#" data-ev-click="${H(x?.onLink)}" style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;overflow-wrap:anywhere">${T(x?.shortlink)}</a></div>
+                ${x?.hasJoin ? `<div style="display:flex;flex-direction:column;gap:4px;min-width:0;grid-column:1 / -1"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Join meeting URL</span><a href="#" data-ev-click="${H(x?.onLink)}" style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;overflow-wrap:anywhere">${T(x?.joinUrl)}</a></div>` : ""}
+              </div>
+            </div>
+            ` : ""}
+            ${x?.isVenue ? `
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid #EEEEEE">
+              <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:13px;letter-spacing:.3px;color:var(--pa-ink);text-transform:uppercase"><i class="mdi mdi-map-marker-outline" style="font-size:17px;color:var(--pa-primary)"></i>Venue</span>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 24px">
+                <div style="display:flex;flex-direction:column;gap:4px;min-width:0;grid-column:1 / -1"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Venue name</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.venueColor)}">${T(x?.venueName)}</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px;min-width:0;grid-column:1 / -1"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Venue address</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.addrColor)};text-wrap:pretty">${T(x?.address)}</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Room name / number</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.roomColor)}">${T(x?.room)}</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">Location</span><span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:${A(x?.locColor)}">${T(x?.location)}</span></div>
+              </div>
+            </div>
+            ` : ""}
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid #EEEEEE">
+              <span style="display:flex;align-items:center;gap:8px;font-family:var(--pa-font-sans);font-size:13px;letter-spacing:.3px;color:var(--pa-ink);text-transform:uppercase"><i class="mdi mdi-account-group-outline" style="font-size:17px;color:var(--pa-primary)"></i>Faculty</span>
+              ${x?.hasFac ? `
+              <div style="display:flex;flex-direction:column">
+                ${(x?.fac || []).map((p, $index) => `
+                  <div style="display:flex;align-items:center;gap:12px;padding:8px 0">
+                    <span style="width:30px;height:30px;border-radius:50%;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-family:var(--pa-font-display);font-weight:600;font-size:11px;background:${A(p?.color)};color:#fff">${T(p?.initials)}</span>
+                    <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font-family:var(--pa-font-display);font-size:13.5px;font-weight:600;color:var(--pa-ink)">${T(p?.name)}</span><span style="font-family:var(--pa-font-display);font-size:12px;color:var(--pa-ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${T(p?.affiliation)}</span></span>
+                    <span style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">${(p?.roles || []).map((ro, $index) => `<span style="display:inline-flex;align-items:center;height:21px;padding:0 9px;border-radius:var(--pa-radius-pill);font-family:var(--pa-font-display);font-weight:700;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;background:var(--pa-primary-12a);color:var(--pa-primary);white-space:nowrap">${T(ro)}</span>`).join("")}</span>
+                  </div>
+                `).join("")}
+              </div>
+              ` : ""}
+              ${x?.noFac ? `<span style="font-family:var(--pa-font-display);font-size:13px;line-height:18px;color:var(--pa-ink-4)">No faculty assigned</span>` : ""}
+            </div>
+                    </div>
+        `).join("")}
+      </div>
+      ` : ""}
+      ${v.sesIsReadiness ? `
+      <div style="flex:1;overflow:auto" data-sk="2">
+        <div style="padding:20px 24px 18px;border-bottom:1px solid #EEEEEE;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <span style="display:flex;align-items:baseline;gap:10px">
+              <span style="font-family:var(--pa-font-display);font-size:36px;line-height:40px;font-weight:500;color:var(--pa-ink)">${T(v.rd?.pctLabel)}</span>
+              <span style="font-family:var(--pa-font-display);font-size:13px;color:var(--pa-ink-2)">ready · ${T(v.rd?.doneLabel)}</span>
+            </span>
+            <span style="font-family:var(--pa-font-display);font-size:13px;color:${A(v.rd?.relColor)}">${T(v.rd?.relLabel)} <span style="font-weight:600">${T(v.rd?.daysLabel)}</span></span>
+          </div>
+          <div style="height:10px;border-radius:5px;background:#E0E0E0;overflow:hidden"><div style="height:100%;width:${A(v.rd?.pctLabel)};background:var(--pa-success)"></div></div>
+          <div style="display:flex;gap:20px;font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-2)">
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:2px;background:var(--pa-success)"></span>Complete <span style="font-weight:600;color:var(--pa-ink)">${T(v.rd?.done)}</span></span>
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:2px;background:#BDBDBD"></span>Remaining <span style="font-weight:600;color:var(--pa-ink)">${T(v.rd?.left)}</span></span>
+          </div>
+        </div>
+        ${v.rd?.isSeries ? `
+          <div style="padding:16px 24px 4px;font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">By session</div>
+          <div style="padding:0 24px 8px">
+            ${(v.rd?.sessions || []).map((q, $index) => `
+              <button class="hv9" data-ev-click="${H(q?.onPick)}" style="display:grid;grid-template-columns:76px minmax(0,1fr) 120px 40px;align-items:center;gap:12px;width:100%;text-align:left;border:none;background:transparent;cursor:pointer;padding:9px 0;border-bottom:1px solid #EEEEEE">
+                <span style="font-family:var(--pa-font-display);font-weight:600;font-size:13px;color:var(--pa-primary)">${T(q?.code)}</span>
+                <span style="font-family:var(--pa-font-display);font-size:12.5px;color:${A(q?.titleColor)};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${T(q?.title)}</span>
+                <span style="height:6px;border-radius:3px;background:#E0E0E0;overflow:hidden"><span style="display:block;height:100%;width:${A(q?.pctLabel)};background:var(--pa-success)"></span></span>
+                <span style="font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink);text-align:right">${T(q?.pctLabel)}</span>
+              </button>
+            `).join("")}
+          </div>
+        ` : ""}
+        <div style="padding:18px 24px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;align-items:start">
+          ${(v.rd?.cats || []).map((k, $index) => `
+            <div style="border:1px solid #E0E0E0;border-radius:4px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <i class="mdi ${A(k?.icon)}" style="font-size:18px;color:var(--pa-ink-2)"></i>
+                <span style="flex:1;font-family:var(--pa-font-sans);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink)">${T(k?.label)}</span>
+                <span style="font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink)">${T(k?.frac)}</span>
+              </div>
+              <div style="height:8px;border-radius:4px;background:#E0E0E0;overflow:hidden"><div style="height:100%;width:${A(k?.pctLabel)};background:var(--pa-success)"></div></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+                <span style="display:flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-2)"><i class="mdi ${A(k?.stateIcon)}" style="font-size:16px;color:${A(k?.stateColor)}"></i>${T(k?.leftLabel)}</span>
+                ${k?.hasLeft ? `<button data-ev-click="${H(k?.onToggle)}" style="display:flex;align-items:center;gap:3px;white-space:nowrap;flex-shrink:0;border:none;background:transparent;cursor:pointer;padding:0;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary)">${T(k?.toggleLabel)}<i class="mdi ${A(k?.toggleIcon)}" style="font-size:14px"></i></button>` : ""}
+              </div>
+              ${k?.open ? `
+                <div style="display:flex;flex-direction:column;border-top:1px solid #EEEEEE;margin:0 -14px -12px;padding:4px 0">
+                  ${(k?.items || []).map((it, $index) => `
+                    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 14px;font-family:var(--pa-font-display);font-size:12.5px;line-height:17px;color:var(--pa-ink)"><i class="mdi mdi-checkbox-blank-circle-outline" style="font-size:15px;color:var(--pa-ink-4)"></i><span style="min-width:0"><span style="display:block">${T(it?.label)}</span>${it?.hasWhere ? `<span style="display:block;font-size:11.5px;color:var(--pa-ink-4)">${T(it?.where)}</span>` : ""}</span></div>
+                  `).join("")}
+                </div>
+              ` : ""}
+            </div>
+          `).join("")}
+        </div>
+      </div>
+      ` : ""}
+      <div style="display:flex;justify-content:flex-end;padding:12px 24px;border-top:1px solid #EEEEEE">
+        <button class="pa-btn pa-btn--tertiary" data-ev-click="${H(v.onCloseSes)}">Close</button>
+      </div>
+    </div>
+  </div>
+` : ""}
+
+${v.drawerOpen ? `
+  <div style="position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end">
+    <div data-ev-click="${H(v.onCloseDrawer)}" style="position:absolute;inset:0;background:rgba(0,0,0,0.5)"></div>
+    <div style="position:relative;width:410px;max-width:92vw;height:100%;background:#fff;box-shadow:var(--pa-elev-modal);display:flex;flex-direction:column">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid #EEEEEE">
+        <span style="min-width:0">
+          <span style="display:block;font-family:var(--pa-font-sans);font-size:15px;letter-spacing:.3px;color:var(--pa-ink)">${T(v.drawerTitle)}</span>
+          <span style="display:block;font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-3);margin-top:3px">${T(v.drawerSub)}</span>
+        </span>
+        <button data-ev-click="${H(v.onCloseDrawer)}" title="Close" style="border:none;background:transparent;cursor:pointer;color:var(--pa-ink-3);display:flex;padding:2px"><i class="mdi mdi-close" style="font-size:20px"></i></button>
+      </div>
+      <div style="flex:1;overflow:auto" data-sk="3">
+        ${v.drawerHasLeft ? `
+        <div style="padding:14px 20px 6px;font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">${T(v.drawerLeftHead)}</div>
+        ${(v.drawerItems || []).map((i, $index) => `
+          <div class="hv10" style="display:flex;align-items:flex-start;gap:4px;padding:0 12px 0 0;border-bottom:1px solid #EEEEEE">
+            <button data-ev-click="${H(i?.onGo)}" style="flex:1;min-width:0;display:flex;align-items:flex-start;gap:11px;text-align:left;border:none;background:transparent;cursor:pointer;padding:13px 0 13px 20px">
+              <i class="mdi mdi-checkbox-blank-circle-outline" style="font-size:19px;color:var(--pa-ink-4);flex-shrink:0"></i>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-family:var(--pa-font-display);font-size:13.5px;color:var(--pa-ink)">${T(i?.label)}</span>
+                <span style="display:block;font-family:var(--pa-font-display);font-size:11.5px;color:var(--pa-ink-4);margin-top:2px">${T(i?.note)}</span>
+              </span>
+              <span style="font-family:var(--pa-font-sans);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);white-space:nowrap;padding-top:3px">${T(i?.tab)}</span>
+            </button>
+            <span style="position:relative;flex-shrink:0;margin-top:8px">
+              <button class="pa-icon-btn pa-icon-btn--sm" aria-label="Mark as not needed" data-ev-click="${H(i?.onDismiss)}" data-ev-mouseenter="${H(i?.onTipIn)}" data-ev-mouseleave="${H(i?.onTipOut)}" data-ev-focus="${H(i?.onTipIn)}" data-ev-blur="${H(i?.onTipOut)}"><i class="mdi mdi-minus-circle-outline"></i></button>
+              ${i?.tip ? `
+                <span role="tooltip" style="position:absolute;right:0;top:calc(100% + 6px);z-index:5;width:max-content;max-width:220px;padding:6px 10px;border-radius:4px;background:rgba(97,97,97,0.95);color:#fff;font-family:var(--pa-font-sans);font-size:12px;line-height:16px;pointer-events:none;text-align:left">Mark as not needed<span style="display:block;color:rgba(255,255,255,0.75);font-size:11px;margin-top:2px">Won't count toward readiness. You can restore it later.</span></span>
+              ` : ""}
+            </span>
+          </div>
+        `).join("")}
+        ` : ""}
+        <div style="padding:18px 20px 6px;font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">${T(v.drawerDoneHead)}</div>
+        ${(v.drawerDone || []).map((i, $index) => `
+          <button class="hv11" data-ev-click="${H(i?.onGo)}" style="display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;border:none;background:transparent;cursor:pointer;padding:10px 20px;border-bottom:1px solid #EEEEEE">
+            <i class="mdi mdi-check-circle" style="font-size:19px;color:var(--pa-success);flex-shrink:0"></i>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-family:var(--pa-font-display);font-size:13.5px;color:var(--pa-ink)">${T(i?.label)}</span>
+              <span style="display:block;font-family:var(--pa-font-display);font-size:11.5px;color:var(--pa-ink-4);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${T(i?.note)}</span>
+            </span>
+          </button>
+        `).join("")}
+        ${v.drawerHasDismissed ? `
+          <div style="padding:18px 20px 6px;font-family:var(--pa-font-sans);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-ink-3)">${T(v.drawerDismissedHead)}</div>
+          <div style="padding:0 20px 8px;font-family:var(--pa-font-display);font-size:11.5px;line-height:16px;color:var(--pa-ink-4)">Not counted toward readiness for this project.</div>
+          ${(v.drawerDismissed || []).map((i, $index) => `
+            <div style="display:flex;align-items:center;gap:11px;padding:10px 20px;border-bottom:1px solid #EEEEEE">
+              <i class="mdi mdi-minus-circle-outline" style="font-size:19px;color:var(--pa-ink-5);flex-shrink:0"></i>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-family:var(--pa-font-display);font-size:13.5px;color:var(--pa-ink-3)">${T(i?.label)}</span>
+                <span style="display:block;font-family:var(--pa-font-display);font-size:11.5px;color:var(--pa-ink-4);margin-top:2px">${T(i?.by)}</span>
+              </span>
+              <button class="hv12" data-ev-click="${H(i?.onRestore)}" style="border:none;background:transparent;cursor:pointer;font-family:var(--pa-font-sans);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--pa-primary);padding:4px 2px;white-space:nowrap">Restore</button>
+            </div>
+          `).join("")}
+        ` : ""}
+      </div>
+    </div>
+  </div>
+` : ""}
+
+${v.logOpen ? `
+  <div style="position:fixed;inset:0;z-index:70">
+    <div data-ev-click="${H(v.onCloseLog)}" style="position:absolute;inset:0;background:rgba(0,0,0,0.5)"></div>
+    ${C("Change History Panel", {"recordLabel": `Project`, "activityCode": `72261`, "sessions": v.history, "onClose": v.onCloseLog}, "position:absolute;top:0;right:0;bottom:0;width:820px;max-width:94vw")}
+  </div>
+` : ""}
+
+${v.hasToast ? `
+  <div class="pa-toast" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:80;animation:toastIn 300ms cubic-bezier(.4,0,.2,1)"><i class="mdi mdi-information-outline pa-toast__icon" style="color:var(--pa-primary)"></i><span>${T(v.toast)}</span></div>
+` : ""}
+
+`;
+const renderChp = (v) => `
+
+<div style="height:100%;min-height:100vh;display:flex;justify-content:flex-end;">
+  <div style="width:820px;max-width:94vw;height:100vh;background:#fff;box-shadow:var(--pa-elev-modal);display:flex;flex-direction:column;color:var(--pa-ink);">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 26px 14px;flex:none;">
+      <div style="min-width:0;">
+        <div style="font-family:var(--pa-font-modal,var(--pa-font-display));font-size:20px;font-weight:500;letter-spacing:0.02em;text-transform:uppercase;line-height:1.1;color:var(--pa-ink);">Change History</div>
+        <div style="margin-top:5px;display:flex;align-items:baseline;gap:8px;">
+          <span style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--pa-ink-5);">${T(v.recordLabel)}</span>
+          <span style="font-size:13px;font-weight:500;">${T(v.activityCode)}</span>
+          <span style="font-size:13px;color:var(--pa-ink-4);">·</span>
+          <span style="font-size:13px;color:var(--pa-ink-4);">${T(v.countLabel)}</span>
+        </div>
+      </div>
+      <button class="chp-iconbtn" title="Close" data-ev-click="${H(v.onClose)}"><i class="mdi mdi-close" style="font-size:24px;"></i></button>
+    </div>
+    <div style="height:1px;background:var(--pa-divider);margin:0 26px;flex:none;"></div>
+
+    <div style="flex:none;padding:14px 26px 15px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--pa-divider);">
+      <div style="display:flex;align-items:flex-end;gap:14px;">
+        <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid #DADADA;border-radius:var(--pa-radius-sm);background:#fff;">
+          <i class="mdi mdi-magnify" style="font-size:19px;color:var(--pa-ink-4);"></i>
+          <input class="chp-input" placeholder="${A(v.searchPlaceholder)}" value="${A(v.query)}" data-ev-input="${H(v.onQuery)}" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:var(--pa-font-display);font-size:13px;color:var(--pa-ink);" data-fk="2">
+          ${v.hasQuery ? `
+            <button class="chp-iconbtn" style="width:22px;height:22px;" title="Clear search" data-ev-click="${H(v.onClearQuery)}"><i class="mdi mdi-close-circle" style="font-size:15px;color:var(--pa-ink-4);"></i></button>
+          ` : ""}
+        </div>
+        <div class="chp-vf" style="width:220px;flex:none;position:relative;">
+          <label>User</label>
+          <input class="chp-vf__ctrl" value="${A(v.userDisplay)}" data-ev-focus="${H(v.onUserOpen)}" data-ev-input="${H(v.onUserFilter)}" data-ev-blur="${H(v.onUserBlur)}" style="cursor:text;" data-fk="3">
+          <i class="mdi mdi-menu-down chp-vf__icon"></i>
+          ${v.userOpen ? `
+            <div style="position:absolute;top:100%;left:0;right:0;margin-top:3px;background:#fff;border:1px solid var(--pa-divider);border-radius:4px;box-shadow:var(--pa-elev-card);max-height:220px;overflow-y:auto;z-index:60;" data-sk="4">
+              ${(v.userList || []).map((u, $index) => `
+                <div class="chp-opt" data-ev-mousedown="${H(u?.onPick)}" style="padding:9px 12px;font-family:var(--pa-font-sans);font-size:14px;color:var(--pa-ink);cursor:pointer;">${T(u?.label)}</div>
+              `).join("")}
+            </div>
+          ` : ""}
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;">
+        <div class="chp-vf" style="width:150px;flex:none;">
+          <label>From Date</label>
+          <input class="chp-vf__ctrl" type="date" value="${A(v.fromDate)}" data-ev-input="${H(v.onFrom)}" data-fk="4">
+        </div>
+        <div class="chp-vf" style="width:150px;flex:none;">
+          <label>To Date</label>
+          <input class="chp-vf__ctrl" type="date" value="${A(v.toDate)}" data-ev-input="${H(v.onTo)}" data-fk="5">
+        </div>
+        <span style="width:1px;height:22px;background:var(--pa-divider);margin:0 2px 3px;"></span>
+        ${(v.typeChips || []).map((t, $index) => `
+          <button class="chp-chip" style="background:${A(t?.bg)};color:${A(t?.color)};border-color:${A(t?.border)};" data-ev-click="${H(t?.onClick)}">${T(t?.label)}</button>
+        `).join("")}
+        <span style="flex:1;"></span>
+        ${v.anyFilter ? `
+          <button class="chp-clear" data-ev-click="${H(v.onClearAll)}"><i class="mdi mdi-filter-remove-outline" style="font-size:15px;"></i>Clear filters</button>
+        ` : ""}
+      </div>
+    </div>
+
+    <div class="chp-scroll" style="flex:1;min-height:0;overflow:auto;padding:18px 26px 30px;display:flex;flex-direction:column;gap:14px;" data-sk="5">
+      ${v.isEmpty ? `
+        <div style="flex:0 0 auto;padding:46px 0;text-align:center;font-family:var(--pa-font-display);color:var(--pa-ink-4);">
+          <i class="mdi mdi-history" style="font-size:34px;display:block;margin-bottom:10px;color:#C9C9C9;"></i>
+          <div style="font-size:13.5px;">No changes match these filters.</div>
+        </div>
+      ` : ""}
+      ${(v.sessions || []).map((s, $index) => `
+        <div class="chp-ses">
+          <button class="chp-seshd" data-ev-click="${H(s?.onToggle)}">
+            <span class="chp-av">${T(s?.initials)}</span>
+            <span style="flex:1;min-width:0;">
+              <span style="display:block;font-family:var(--pa-font-display);font-size:13px;color:var(--pa-ink);"><strong style="font-weight:600;">${T(s?.user)}</strong><span class="chp-count">${T(s?.countLabel)}</span>${s?.hasArea ? `<span style="display:inline-flex;align-items:center;height:18px;padding:0 8px;border-radius:var(--pa-radius-pill);background:#F0F0F0;color:var(--pa-ink-2);font-family:var(--pa-font-sans);font-weight:600;font-size:10px;margin-left:6px;">${T(s?.area)}</span>` : ""}</span>
+              <span style="display:block;font-family:var(--pa-font-display);font-size:11.5px;color:var(--pa-ink-3);margin-top:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">${T(s?.stamp)}</span>
+            </span>
+            <i class="mdi ${A(s?.chev)}" style="font-size:20px;color:var(--pa-ink-3);"></i>
+          </button>
+          ${s?.expanded ? `
+            <div style="border-top:1px solid #EEEEEE;padding:6px 16px 18px;">
+              ${(s?.changes || []).map((c, $index) => `
+                <div style="margin-top:16px;display:flex;gap:16px;">
+                  ${c?.hasTime ? `
+                    <div style="flex:none;width:64px;align-self:stretch;border-right:1px solid #EEEEEE;font-family:var(--pa-font-display);font-size:12px;line-height:20px;color:var(--pa-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap;">${T(c?.time)}</div>
+                  ` : ""}
+                  <div style="flex:1;min-width:0;">
+                  <div style="font-family:var(--pa-font-display);font-size:13.5px;color:var(--pa-ink);margin-bottom:8px;">
+                    <strong style="font-weight:600;">${T(c?.field)}</strong>
+                    <span class="chp-badge" style="background:${A(c?.badgeBg)};color:${A(c?.badgeColor)};margin-left:9px;">${T(c?.badgeLabel)}</span>
+                  </div>
+                  ${c?.isSingle ? `
+                    <div class="chp-box">
+                      <div class="chp-boxlbl">${T(c?.singleLabel)}</div>
+                      <div class="chp-boxv" style="background:${A(c?.singleBg)};color:${A(c?.singleColor)};text-decoration:${A(c?.singleStrike)};">${T(c?.singleValue)}</div>
+                    </div>
+                  ` : ""}
+                  ${c?.isPair ? `
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                      <div class="chp-box">
+                        <div class="chp-boxlbl">Old</div>
+                        <div class="chp-boxv" style="background:var(--pa-error-bg);color:var(--pa-ink-3);text-decoration:line-through;">${T(c?.old)}</div>
+                      </div>
+                      <div class="chp-box">
+                        <div class="chp-boxlbl">New</div>
+                        <div class="chp-boxv" style="background:var(--pa-success-bg);color:var(--pa-ink);">${T(c?.new)}</div>
+                      </div>
+                    </div>
+                  ` : ""}
+                  ${c?.isDiff ? `
+                    <div class="chp-box">
+                      <div class="chp-boxlbl">Changes</div>
+                      <div class="chp-boxv" style="color:var(--pa-ink);">${(c?.tokens || []).map((tk, $index) => `<span style="background:${A(tk?.bg)};color:${A(tk?.color)};text-decoration:${A(tk?.strike)};border-radius:2px;">${T(tk?.text)}</span>`).join("")}</div>
+                    </div>
+                  ` : ""}
+                  </div>
+                </div>
+              `).join("")}
+              ${s?.hasNote ? `
+                <div style="margin-top:18px;padding:11px 14px;border-radius:var(--pa-radius-sm);background:var(--pa-primary-050);font-family:var(--pa-font-display);font-size:12.5px;line-height:19px;color:var(--pa-primary-700);">
+                  <strong style="font-weight:600;">NOTES: </strong>${T(s?.note)}
+                </div>
+              ` : ""}
+              <div style="margin-top:14px;padding:11px 14px;border-radius:var(--pa-radius-sm);background:${A(s?.notifyBg)};font-family:var(--pa-font-display);font-size:12.5px;color:${A(s?.notifyColor)};">
+                <strong style="font-weight:600;">NOTIFIED: </strong>${T(s?.notifyText)}
+              </div>
+            </div>
+          ` : ""}
+        </div>
+      `).join("")}
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 26px;border-top:1px solid var(--pa-divider);flex:none;">
+      <span style="font-family:var(--pa-font-display);font-size:12.5px;color:var(--pa-ink-4);">Read only. Details and Planning log one entry per save; Faculty and Files group a session's auto-saved changes.</span>
+      <button class="pa-btn pa-btn--primary" data-ev-click="${H(v.onClose)}"><span>Close</span></button>
+    </div>
+  </div>
+</div>
+`;
+const COMPONENTS = { "Change History Panel": { cls: ChangeHistoryPanel, render: renderChp } };
+mount(document.getElementById("root"), new ProjectOverview({}), renderApp);
+</script>
+</body>
+</html>
